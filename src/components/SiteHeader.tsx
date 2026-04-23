@@ -1,8 +1,11 @@
 "use client";
 import { Link } from "@tanstack/react-router";
-import { Anchor, Menu, X, Phone } from "lucide-react";
+import { Anchor, Menu, X, Phone, ShoppingCart, LogIn, LayoutDashboard } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useCart } from "@/contexts/CartContext";
+import { useAuth } from "@/hooks/useAuth";
+import { CONTACT_PHONE, CONTACT_PHONE_DISPLAY } from "@/lib/constants";
 
 const nav = [
   { to: "/engines", label: "Engines" },
@@ -16,6 +19,8 @@ const nav = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { count, setOpen: setCartOpen } = useCart();
+  const { user } = useAuth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -61,23 +66,60 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-2">
+          <button
+            onClick={() => setCartOpen(true)}
+            aria-label="Open cart"
+            className="relative h-10 w-10 rounded-full hover:bg-secondary flex items-center justify-center transition-colors"
+          >
+            <ShoppingCart className="h-4 w-4" />
+            {count > 0 && (
+              <span className="absolute -top-1 -right-1 h-5 min-w-5 px-1 rounded-full bg-accent text-accent-foreground text-[10px] font-bold flex items-center justify-center">{count}</span>
+            )}
+          </button>
+          {user ? (
+            <Link
+              to="/admin"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-xs font-semibold hover:bg-secondary transition-colors"
+            >
+              <LayoutDashboard className="h-3.5 w-3.5" /> Admin
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-xs font-semibold hover:bg-secondary transition-colors"
+            >
+              <LogIn className="h-3.5 w-3.5" /> Login
+            </Link>
+          )}
           <a
-            href="tel:+18005550199"
+            href={`tel:${CONTACT_PHONE}`}
             className="btn-premium inline-flex items-center gap-2 rounded-full bg-foreground text-background px-5 py-2.5 text-sm font-semibold hover:bg-accent hover:text-accent-foreground transition-colors duration-500"
           >
             <Phone className="h-3.5 w-3.5" />
-            (800) 555-0199
+            {CONTACT_PHONE_DISPLAY}
           </a>
         </div>
 
-        <button
-          className="lg:hidden p-2 -mr-2"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex lg:hidden items-center gap-1">
+          <button
+            onClick={() => setCartOpen(true)}
+            aria-label="Open cart"
+            className="relative h-10 w-10 rounded-full hover:bg-secondary flex items-center justify-center"
+          >
+            <ShoppingCart className="h-4 w-4" />
+            {count > 0 && (
+              <span className="absolute -top-1 -right-1 h-5 min-w-5 px-1 rounded-full bg-accent text-accent-foreground text-[10px] font-bold flex items-center justify-center">{count}</span>
+            )}
+          </button>
+          <button
+            className="p-2"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -106,8 +148,11 @@ export function SiteHeader() {
                   </Link>
                 </motion.div>
               ))}
-              <a href="tel:+18005550199" className="mt-4 inline-flex justify-center rounded-full bg-foreground text-background px-5 py-3 text-sm font-semibold">
-                (800) 555-0199
+              <Link to={user ? "/admin" : "/login"} onClick={() => setOpen(false)} className="block py-3 text-2xl font-display text-accent">
+                {user ? "Admin" : "Login"}
+              </Link>
+              <a href={`tel:${CONTACT_PHONE}`} className="mt-4 inline-flex justify-center rounded-full bg-foreground text-background px-5 py-3 text-sm font-semibold">
+                {CONTACT_PHONE_DISPLAY}
               </a>
             </div>
           </motion.div>

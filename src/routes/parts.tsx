@@ -1,10 +1,14 @@
 "use client";
+import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Container } from "../components/Section";
+import { PageHero, Container, SectionLabel } from "../components/Section";
 import { Reveal, StaggerGroup, StaggerItem } from "../components/Motion";
-import { Battery, Compass, Cog, Fuel, Truck, Wrench } from "lucide-react";
+import { Battery, Compass, Cog, Fuel, Truck, Wrench, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import partsImg from "@/assets/parts.jpg";
+import { fetchProducts, type Product } from "@/lib/products";
+import { ProductCard } from "@/components/ProductCard";
+import { ProductDetailModal } from "@/components/ProductDetailModal";
 
 export const Route = createFileRoute("/parts")({
   head: () => ({
@@ -28,6 +32,14 @@ const cats = [
 ];
 
 function Parts() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [active, setActive] = useState<Product | null>(null);
+
+  useEffect(() => {
+    fetchProducts("parts").then(setProducts).catch(() => {}).finally(() => setLoading(false));
+  }, []);
+
   return (
     <>
       <PageHero
@@ -37,7 +49,26 @@ function Parts() {
         description="Over 10,000 line items in our warehouse — genuine OEM parts and the accessories captains actually use."
         image={partsImg}
       />
-      <section className="py-24 md:py-32">
+
+      {(loading || products.length > 0) && (
+        <section className="py-20 md:py-28">
+          <Container>
+            <Reveal><SectionLabel>In stock</SectionLabel></Reveal>
+            <Reveal delay={0.1}><h2 className="font-display text-3xl md:text-5xl mt-4 mb-10 leading-tight">Available <span className="italic font-normal text-muted-foreground">now.</span></h2></Reveal>
+            {loading ? (
+              <div className="py-10 text-center"><Loader2 className="h-6 w-6 animate-spin mx-auto text-muted-foreground" /></div>
+            ) : (
+              <StaggerGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {products.map((p) => (
+                  <StaggerItem key={p.id}><ProductCard product={p} onView={setActive} /></StaggerItem>
+                ))}
+              </StaggerGroup>
+            )}
+          </Container>
+        </section>
+      )}
+
+      <section className="py-16 md:py-24">
         <Container>
           <StaggerGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {cats.map(({ i: Icon, n, c, count }) => (
@@ -68,6 +99,7 @@ function Parts() {
           </Reveal>
         </Container>
       </section>
+      <ProductDetailModal product={active} onClose={() => setActive(null)} />
     </>
   );
 }
