@@ -1,10 +1,14 @@
 "use client";
+import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Container, SectionLabel } from "../components/Section";
 import { Reveal, StaggerGroup, StaggerItem } from "../components/Motion";
-import { ArrowRight, Users, Fish, Compass, Anchor } from "lucide-react";
+import { ArrowRight, Users, Fish, Compass, Anchor, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import boatImg from "@/assets/boat.jpg";
+import { fetchProducts, type Product } from "@/lib/products";
+import { ProductCard } from "@/components/ProductCard";
+import { ProductDetailModal } from "@/components/ProductDetailModal";
 
 export const Route = createFileRoute("/boats")({
   head: () => ({
@@ -13,6 +17,9 @@ export const Route = createFileRoute("/boats")({
       { name: "description", content: "Shop new boats from trusted manufacturers. Jon boats, bass boats, pontoons and offshore center consoles." },
       { property: "og:title", content: "Boats | CoastalPro Marine" },
       { property: "og:description", content: "Jon boats, bass boats, pontoons and center consoles." },
+      { property: "og:image", content: boatImg },
+      { name: "twitter:image", content: boatImg },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Boats,
@@ -26,6 +33,14 @@ const lines = [
 ];
 
 function Boats() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [active, setActive] = useState<Product | null>(null);
+
+  useEffect(() => {
+    fetchProducts("boats").then(setProducts).catch(() => {}).finally(() => setLoading(false));
+  }, []);
+
   return (
     <>
       <PageHero
@@ -35,8 +50,35 @@ function Boats() {
         description="From skinny-water jon boats to fully-rigged offshore consoles, our showroom carries hulls for every captain and every mission."
         image={boatImg}
       />
-      <section className="py-24 md:py-32">
+
+      {(loading || products.length > 0) && (
+        <section className="py-20 md:py-28">
+          <Container>
+            <div className="flex items-end justify-between gap-6 mb-10 flex-wrap">
+              <div>
+                <Reveal><SectionLabel>In stock</SectionLabel></Reveal>
+                <Reveal delay={0.1}>
+                  <h2 className="font-display text-3xl md:text-5xl mt-4 leading-tight">Available <span className="italic font-normal text-muted-foreground">now.</span></h2>
+                </Reveal>
+              </div>
+            </div>
+            {loading ? (
+              <div className="py-10 text-center"><Loader2 className="h-6 w-6 animate-spin mx-auto text-muted-foreground" /></div>
+            ) : (
+              <StaggerGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {products.map((p) => (
+                  <StaggerItem key={p.id}><ProductCard product={p} onView={setActive} /></StaggerItem>
+                ))}
+              </StaggerGroup>
+            )}
+          </Container>
+        </section>
+      )}
+
+      <section className="py-16 md:py-24">
         <Container>
+          <Reveal><SectionLabel>Categories</SectionLabel></Reveal>
+          <Reveal delay={0.1}><h2 className="font-display text-3xl md:text-5xl mt-4 mb-10 leading-tight">Explore the <span className="italic font-normal text-muted-foreground">lineup.</span></h2></Reveal>
           <StaggerGroup className="space-y-5">
             {lines.map((l) => {
               const Icon = l.icon;
@@ -83,6 +125,8 @@ function Boats() {
           </Reveal>
         </Container>
       </section>
+
+      <ProductDetailModal product={active} onClose={() => setActive(null)} />
     </>
   );
 }

@@ -54,7 +54,7 @@ export function SiteFooter() {
             <ul className="space-y-4 text-sm text-background/70">
               <li className="flex items-start gap-3"><MapPin className="h-4 w-4 mt-0.5 shrink-0 text-accent" />2400 Harbor Way<br />Wilmington, NC 28401</li>
               <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-accent" />(800) 555-0199</li>
-              <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-accent" />sales@coastalpromarine.com</li>
+              <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-accent" />coastalpromarine@gmail.com</li>
             </ul>
           </div>
         </div>

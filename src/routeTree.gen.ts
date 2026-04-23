@@ -11,10 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServiceRouteImport } from './routes/service'
 import { Route as PartsRouteImport } from './routes/parts'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as FinancingRouteImport } from './routes/financing'
 import { Route as EnginesRouteImport } from './routes/engines'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BoatsRouteImport } from './routes/boats'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ServiceRoute = ServiceRouteImport.update({
@@ -25,6 +27,11 @@ const ServiceRoute = ServiceRouteImport.update({
 const PartsRoute = PartsRouteImport.update({
   id: '/parts',
   path: '/parts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinancingRoute = FinancingRouteImport.update({
@@ -47,6 +54,11 @@ const BoatsRoute = BoatsRouteImport.update({
   path: '/boats',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -55,29 +67,35 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/boats': typeof BoatsRoute
   '/contact': typeof ContactRoute
   '/engines': typeof EnginesRoute
   '/financing': typeof FinancingRoute
+  '/login': typeof LoginRoute
   '/parts': typeof PartsRoute
   '/service': typeof ServiceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/boats': typeof BoatsRoute
   '/contact': typeof ContactRoute
   '/engines': typeof EnginesRoute
   '/financing': typeof FinancingRoute
+  '/login': typeof LoginRoute
   '/parts': typeof PartsRoute
   '/service': typeof ServiceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/boats': typeof BoatsRoute
   '/contact': typeof ContactRoute
   '/engines': typeof EnginesRoute
   '/financing': typeof FinancingRoute
+  '/login': typeof LoginRoute
   '/parts': typeof PartsRoute
   '/service': typeof ServiceRoute
 }
@@ -85,38 +103,46 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/boats'
     | '/contact'
     | '/engines'
     | '/financing'
+    | '/login'
     | '/parts'
     | '/service'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin'
     | '/boats'
     | '/contact'
     | '/engines'
     | '/financing'
+    | '/login'
     | '/parts'
     | '/service'
   id:
     | '__root__'
     | '/'
+    | '/admin'
     | '/boats'
     | '/contact'
     | '/engines'
     | '/financing'
+    | '/login'
     | '/parts'
     | '/service'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
   BoatsRoute: typeof BoatsRoute
   ContactRoute: typeof ContactRoute
   EnginesRoute: typeof EnginesRoute
   FinancingRoute: typeof FinancingRoute
+  LoginRoute: typeof LoginRoute
   PartsRoute: typeof PartsRoute
   ServiceRoute: typeof ServiceRoute
 }
@@ -135,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/parts'
       fullPath: '/parts'
       preLoaderRoute: typeof PartsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/financing': {
@@ -165,6 +198,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BoatsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -177,22 +217,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
   BoatsRoute: BoatsRoute,
   ContactRoute: ContactRoute,
   EnginesRoute: EnginesRoute,
   FinancingRoute: FinancingRoute,
+  LoginRoute: LoginRoute,
   PartsRoute: PartsRoute,
   ServiceRoute: ServiceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}

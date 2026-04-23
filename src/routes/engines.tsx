@@ -1,10 +1,14 @@
 "use client";
+import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Container, SectionLabel } from "../components/Section";
 import { Reveal, StaggerGroup, StaggerItem } from "../components/Motion";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import engineImg from "@/assets/engine.jpg";
+import { fetchProducts, type Product } from "@/lib/products";
+import { ProductCard } from "@/components/ProductCard";
+import { ProductDetailModal } from "@/components/ProductDetailModal";
 
 export const Route = createFileRoute("/engines")({
   head: () => ({
@@ -50,6 +54,14 @@ const tiers = [
 ];
 
 function Engines() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [active, setActive] = useState<Product | null>(null);
+
+  useEffect(() => {
+    fetchProducts("engines").then(setProducts).catch(() => {}).finally(() => setLoading(false));
+  }, []);
+
   return (
     <>
       <PageHero
@@ -59,7 +71,26 @@ function Engines() {
         description="We're an authorized dealer for every major outboard brand. Whether you need a 2.5 HP backup or a quad-rigged 350, we'll spec, deliver and service it."
         image={engineImg}
       />
-      <section className="py-24 md:py-32">
+
+      {(loading || products.length > 0) && (
+        <section className="py-20 md:py-28">
+          <Container>
+            <Reveal><SectionLabel>In stock</SectionLabel></Reveal>
+            <Reveal delay={0.1}><h2 className="font-display text-3xl md:text-5xl mt-4 mb-10 leading-tight">Available <span className="italic font-normal text-muted-foreground">now.</span></h2></Reveal>
+            {loading ? (
+              <div className="py-10 text-center"><Loader2 className="h-6 w-6 animate-spin mx-auto text-muted-foreground" /></div>
+            ) : (
+              <StaggerGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {products.map((p) => (
+                  <StaggerItem key={p.id}><ProductCard product={p} onView={setActive} /></StaggerItem>
+                ))}
+              </StaggerGroup>
+            )}
+          </Container>
+        </section>
+      )}
+
+      <section className="py-16 md:py-24">
         <Container>
           <StaggerGroup className="grid md:grid-cols-2 gap-6">
             {tiers.map((t, i) => (
@@ -100,6 +131,7 @@ function Engines() {
           </Reveal>
         </Container>
       </section>
+      <ProductDetailModal product={active} onClose={() => setActive(null)} />
     </>
   );
 }
