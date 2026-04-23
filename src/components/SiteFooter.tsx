@@ -7,11 +7,6 @@ export function SiteFooter() {
   return (
     <footer className="relative bg-gradient-deep text-background mt-32 noise overflow-hidden">
       {/* huge brand watermark */}
-      <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 pointer-events-none select-none">
-        <div className="font-display text-[18vw] leading-none font-semibold text-background/[0.04] whitespace-nowrap">
-          CoastalPro
-        </div>
-      </div>
 
       <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-10">
         <div className="grid gap-12 md:grid-cols-12">
