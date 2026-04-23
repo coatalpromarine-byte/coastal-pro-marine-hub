@@ -1,5 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Container } from "../components/Section";
+"use client";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { PageHero, Container, SectionLabel } from "../components/Section";
+import { Reveal, StaggerGroup, StaggerItem } from "../components/Motion";
+import { ArrowRight, Users, Fish, Compass, Anchor } from "lucide-react";
+import { motion } from "framer-motion";
 import boatImg from "@/assets/boat.jpg";
 
 export const Route = createFileRoute("/boats")({
@@ -15,10 +19,10 @@ export const Route = createFileRoute("/boats")({
 });
 
 const lines = [
-  { name: "Jon Boats", use: "Backwater & utility", len: "10 – 18 ft", price: "from $2,990" },
-  { name: "Bass Boats", use: "Tournament fishing", len: "17 – 21 ft", price: "from $24,900" },
-  { name: "Pontoons", use: "Family cruising", len: "20 – 28 ft", price: "from $32,500" },
-  { name: "Center Consoles", use: "Bluewater & charter", len: "22 – 36 ft", price: "from $58,000" },
+  { name: "Jon Boats", use: "Backwater & utility", len: "10 – 18 ft", price: "from $2,990", icon: Anchor, desc: "Aluminum flat-bottom hulls built for shallow creeks, pond fishing and heavy-duty work." },
+  { name: "Bass Boats", use: "Tournament fishing", len: "17 – 21 ft", price: "from $24,900", icon: Fish, desc: "Lightning-fast fiberglass with aerated livewells, rod lockers and tournament-grade electronics." },
+  { name: "Pontoons", use: "Family cruising", len: "20 – 28 ft", price: "from $32,500", icon: Users, desc: "Triple-tube performance with plush lounge seating, Bimini tops and Bluetooth audio." },
+  { name: "Center Consoles", use: "Bluewater & charter", len: "22 – 36 ft", price: "from $58,000", icon: Compass, desc: "Deep-V offshore hulls with leaning posts, outriggers and twin- or quad-engine rigging." },
 ];
 
 function Boats() {
@@ -27,36 +31,56 @@ function Boats() {
       <PageHero
         eyebrow="Boats"
         title="The right hull for every horizon."
+        italicWords={[4, 5]}
         description="From skinny-water jon boats to fully-rigged offshore consoles, our showroom carries hulls for every captain and every mission."
         image={boatImg}
       />
-      <section className="py-20">
+      <section className="py-24 md:py-32">
         <Container>
-          <div className="overflow-hidden rounded-2xl border border-border">
-            <table className="w-full">
-              <thead className="bg-secondary">
-                <tr className="text-left text-xs uppercase tracking-wider text-muted-foreground">
-                  <th className="px-6 py-4">Model line</th>
-                  <th className="px-6 py-4">Best for</th>
-                  <th className="px-6 py-4">Length</th>
-                  <th className="px-6 py-4 text-right">Starting</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border bg-card">
-                {lines.map((l) => (
-                  <tr key={l.name} className="hover:bg-secondary/50 transition-colors">
-                    <td className="px-6 py-5 font-display text-xl">{l.name}</td>
-                    <td className="px-6 py-5 text-muted-foreground">{l.use}</td>
-                    <td className="px-6 py-5 text-muted-foreground">{l.len}</td>
-                    <td className="px-6 py-5 text-right font-semibold text-accent">{l.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="text-sm text-muted-foreground mt-6">
-            Trade-ins welcome. Sea trials available by appointment.
-          </p>
+          <StaggerGroup className="space-y-5">
+            {lines.map((l) => {
+              const Icon = l.icon;
+              return (
+                <StaggerItem key={l.name}>
+                  <motion.div
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
+                    className="group relative grid md:grid-cols-12 items-center gap-6 rounded-2xl border border-border bg-card p-7 hover:shadow-elevated transition-shadow duration-700"
+                  >
+                    <div className="absolute top-0 left-0 bottom-0 w-px bg-accent scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-700" />
+                    <div className="md:col-span-1">
+                      <div className="h-11 w-11 rounded-xl bg-secondary flex items-center justify-center group-hover:bg-accent transition-colors duration-500">
+                        <Icon className="h-5 w-5 text-accent group-hover:text-accent-foreground transition-colors duration-500" />
+                      </div>
+                    </div>
+                    <div className="md:col-span-3">
+                      <h3 className="font-display text-2xl">{l.name}</h3>
+                      <p className="text-xs uppercase tracking-wider text-muted-foreground mt-0.5">{l.use}</p>
+                    </div>
+                    <p className="md:col-span-4 text-sm text-muted-foreground font-light">{l.desc}</p>
+                    <div className="md:col-span-2 text-sm text-muted-foreground font-mono">{l.len}</div>
+                    <div className="md:col-span-2 flex items-center justify-between">
+                      <span className="font-display text-lg text-accent">{l.price}</span>
+                      <div className="h-9 w-9 rounded-full border border-border flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <ArrowRight className="h-4 w-4" />
+                      </div>
+                    </div>
+                  </motion.div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerGroup>
+          <Reveal delay={0.2} className="mt-14 rounded-2xl bg-secondary p-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-muted-foreground text-sm">
+              Trade-ins welcome. Sea trials available by appointment.
+            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-5 py-2.5 text-sm font-semibold hover:bg-accent hover:text-accent-foreground transition-colors duration-500 shrink-0"
+            >
+              Schedule a sea trial <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Reveal>
         </Container>
       </section>
     </>

@@ -1,7 +1,10 @@
+"use client";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, Container } from "../components/Section";
-import partsImg from "@/assets/parts.jpg";
+import { Reveal, StaggerGroup, StaggerItem } from "../components/Motion";
 import { Battery, Compass, Cog, Fuel, Truck, Wrench } from "lucide-react";
+import { motion } from "framer-motion";
+import partsImg from "@/assets/parts.jpg";
 
 export const Route = createFileRoute("/parts")({
   head: () => ({
@@ -16,12 +19,12 @@ export const Route = createFileRoute("/parts")({
 });
 
 const cats = [
-  { i: Cog, n: "Propellers", c: "Aluminum, stainless, 3 & 4 blade" },
-  { i: Battery, n: "Batteries", c: "Cranking, deep cycle, lithium" },
-  { i: Fuel, n: "Fuel Systems", c: "Tanks, pumps, filters, lines" },
-  { i: Compass, n: "Electronics", c: "GPS, sonar, VHF, radar" },
-  { i: Truck, n: "Trailers", c: "Galvanized, aluminum, parts" },
-  { i: Wrench, n: "Maintenance", c: "Oil, filters, impellers, plugs" },
+  { i: Cog, n: "Propellers", c: "Aluminum, stainless, 3 & 4 blade", count: "1,200+" },
+  { i: Battery, n: "Batteries", c: "Cranking, deep cycle, lithium", count: "800+" },
+  { i: Fuel, n: "Fuel Systems", c: "Tanks, pumps, filters, lines", count: "2,400+" },
+  { i: Compass, n: "Electronics", c: "GPS, sonar, VHF, radar", count: "1,800+" },
+  { i: Truck, n: "Trailers", c: "Galvanized, aluminum, parts", count: "600+" },
+  { i: Wrench, n: "Maintenance", c: "Oil, filters, impellers, plugs", count: "3,200+" },
 ];
 
 function Parts() {
@@ -30,28 +33,39 @@ function Parts() {
       <PageHero
         eyebrow="Parts & Accessories"
         title="If it's marine, we stock it."
+        italicWords={[3, 4, 5]}
         description="Over 10,000 line items in our warehouse — genuine OEM parts and the accessories captains actually use."
         image={partsImg}
       />
-      <section className="py-20">
+      <section className="py-24 md:py-32">
         <Container>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {cats.map(({ i: Icon, n, c }) => (
-              <div key={n} className="group rounded-2xl border border-border bg-card p-7 hover:border-accent transition-colors">
-                <div className="h-12 w-12 rounded-xl bg-secondary flex items-center justify-center mb-5 group-hover:bg-accent transition-colors">
-                  <Icon className="h-6 w-6 text-foreground group-hover:text-accent-foreground" />
-                </div>
-                <h3 className="font-display text-2xl mb-1">{n}</h3>
-                <p className="text-sm text-muted-foreground">{c}</p>
-              </div>
+          <StaggerGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {cats.map(({ i: Icon, n, c, count }) => (
+              <StaggerItem key={n}>
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
+                  className="group rounded-2xl border border-border bg-card p-8 hover:shadow-elevated transition-shadow duration-700 relative overflow-hidden"
+                >
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="h-12 w-12 rounded-xl bg-secondary flex items-center justify-center group-hover:bg-accent transition-colors duration-500">
+                      <Icon className="h-6 w-6 text-foreground group-hover:text-accent-foreground transition-colors duration-500" />
+                    </div>
+                    <span className="font-mono text-sm text-accent">{count}</span>
+                  </div>
+                  <h3 className="font-display text-2xl mb-2">{n}</h3>
+                  <p className="text-sm text-muted-foreground font-light">{c}</p>
+                </motion.div>
+              </StaggerItem>
             ))}
-          </div>
-          <div className="mt-12 rounded-2xl bg-secondary p-8 text-center">
-            <p className="text-sm text-muted-foreground">Need a hard-to-find part? Call our parts counter.</p>
-            <a href="tel:+18005550199" className="mt-2 inline-block font-display text-3xl text-accent">
+          </StaggerGroup>
+          <Reveal delay={0.2} className="mt-16 rounded-2xl bg-gradient-deep text-background p-10 md:p-12 text-center noise relative">
+            <p className="text-sm text-background/70 mb-3">Need a hard-to-find part? Call our parts counter.</p>
+            <a href="tel:+18005550199" className="inline-block font-display text-4xl md:text-5xl text-shimmer">
               (800) 555-0199
             </a>
-          </div>
+          </Reveal>
         </Container>
       </section>
     </>
