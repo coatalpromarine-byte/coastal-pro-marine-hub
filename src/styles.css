@@ -1,6 +1,5 @@
 @import "tailwindcss" source(none);
 @import "tw-animate-css";
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 
 @source "../src";
 
@@ -47,72 +46,72 @@
   --radius: 0.5rem;
 
   /* Premium coastal palette */
-  --sand: oklch(0.96 0.018 85);
-  --deep: oklch(0.18 0.055 245);
-  --sun: oklch(0.74 0.17 55);
-  --brass: oklch(0.78 0.11 80);
+  --sand: #f3ede4;
+  --deep: #16293d;
+  --sun: #db943d;
+  --brass: #c7a160;
 
-  --background: oklch(0.985 0.01 85);
-  --foreground: oklch(0.18 0.055 245);
+  --background: #fcf8f1;
+  --foreground: #16293d;
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.055 245);
+  --card: #ffffff;
+  --card-foreground: #16293d;
 
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.055 245);
+  --popover: #ffffff;
+  --popover-foreground: #16293d;
 
-  --primary: oklch(0.18 0.055 245);
-  --primary-foreground: oklch(0.985 0.01 85);
+  --primary: #16293d;
+  --primary-foreground: #fcf8f1;
 
-  --secondary: oklch(0.93 0.022 85);
-  --secondary-foreground: oklch(0.18 0.055 245);
+  --secondary: #efe6d8;
+  --secondary-foreground: #16293d;
 
-  --muted: oklch(0.945 0.015 85);
-  --muted-foreground: oklch(0.45 0.04 240);
+  --muted: #f5eee4;
+  --muted-foreground: #5a6f82;
 
-  --accent: oklch(0.74 0.17 55);
-  --accent-foreground: oklch(0.18 0.055 245);
+  --accent: #db943d;
+  --accent-foreground: #16293d;
 
-  --destructive: oklch(0.55 0.22 27);
-  --destructive-foreground: oklch(0.98 0 0);
+  --destructive: #c74737;
+  --destructive-foreground: #fffaf7;
 
-  --border: oklch(0.88 0.018 85);
-  --input: oklch(0.88 0.018 85);
-  --ring: oklch(0.74 0.17 55);
+  --border: #dfd4c5;
+  --input: #dfd4c5;
+  --ring: #db943d;
 
   --gradient-hero: linear-gradient(
     135deg,
-    oklch(0.14 0.05 245 / 0.92) 0%,
-    oklch(0.18 0.055 245 / 0.6) 50%,
-    oklch(0.4 0.12 50 / 0.45) 100%
+    rgb(14 30 47 / 0.92) 0%,
+    rgb(22 41 61 / 0.6) 50%,
+    rgb(181 119 41 / 0.45) 100%
   );
-  --gradient-sun: linear-gradient(135deg, oklch(0.74 0.17 55), oklch(0.82 0.14 75));
-  --gradient-deep: linear-gradient(180deg, oklch(0.22 0.06 245), oklch(0.13 0.04 245));
-  --gradient-brass: linear-gradient(135deg, oklch(0.78 0.11 80), oklch(0.62 0.13 60));
+  --gradient-sun: linear-gradient(135deg, #db943d, #efd1a0);
+  --gradient-deep: linear-gradient(180deg, #233a54, #0e1e2f);
+  --gradient-brass: linear-gradient(135deg, #c7a160, #9f6d31);
   --gradient-shine: linear-gradient(
     110deg,
     transparent 30%,
-    oklch(1 0 0 / 0.15) 50%,
+    rgb(255 255 255 / 0.15) 50%,
     transparent 70%
   );
 
-  --shadow-deep: 0 30px 60px -20px oklch(0.18 0.06 245 / 0.4);
-  --shadow-sun: 0 20px 40px -15px oklch(0.74 0.17 55 / 0.45);
-  --shadow-card: 0 1px 2px oklch(0.18 0.05 245 / 0.04), 0 8px 24px -8px oklch(0.18 0.05 245 / 0.08);
-  --shadow-elevated: 0 10px 30px -10px oklch(0.18 0.05 245 / 0.18), 0 30px 60px -30px oklch(0.18 0.05 245 / 0.25);
+  --shadow-deep: 0 30px 60px -20px rgb(22 41 61 / 0.4);
+  --shadow-sun: 0 20px 40px -15px rgb(219 148 61 / 0.45);
+  --shadow-card: 0 1px 2px rgb(22 41 61 / 0.04), 0 8px 24px -8px rgb(22 41 61 / 0.08);
+  --shadow-elevated: 0 10px 30px -10px rgb(22 41 61 / 0.18), 0 30px 60px -30px rgb(22 41 61 / 0.25);
 
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
 }
 
 .dark {
-  --background: oklch(0.13 0.04 245);
-  --foreground: oklch(0.96 0.018 85);
-  --card: oklch(0.18 0.05 245);
-  --card-foreground: oklch(0.96 0.018 85);
-  --primary: oklch(0.74 0.17 55);
-  --primary-foreground: oklch(0.13 0.04 245);
-  --border: oklch(1 0 0 / 0.1);
+  --background: #0e1e2f;
+  --foreground: #f3ede4;
+  --card: #16293d;
+  --card-foreground: #f3ede4;
+  --primary: #db943d;
+  --primary-foreground: #0e1e2f;
+  --border: rgb(255 255 255 / 0.1);
 }
 
 @keyframes marquee {
@@ -198,7 +197,7 @@
     background: linear-gradient(
       110deg,
       var(--accent) 30%,
-      oklch(0.92 0.13 80) 50%,
+      #f2d8a6 50%,
       var(--accent) 70%
     );
     background-size: 200% 100%;
