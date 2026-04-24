@@ -1,5 +1,4 @@
-"use client";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
@@ -7,11 +6,7 @@ import { Container } from "@/components/Section";
 import { Loader2, Plus, Pencil, Trash2, X, Upload, Star } from "lucide-react";
 import { toast } from "sonner";
 import type { Product } from "@/lib/products";
-
-export const Route = createFileRoute("/admin")({
-  head: () => ({ meta: [{ title: "Admin Panel | CoastalPro Marine" }] }),
-  component: Admin,
-});
+import { useSeo } from "@/lib/seo";
 
 type Draft = {
   id?: string;

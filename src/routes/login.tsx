@@ -1,15 +1,10 @@
-"use client";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Container } from "@/components/Section";
 import { Loader2, Lock } from "lucide-react";
 import { toast } from "sonner";
-
-export const Route = createFileRoute("/login")({
-  head: () => ({ meta: [{ title: "Admin Login | CoastalPro Marine" }] }),
-  component: Login,
-});
+import { useSeo } from "@/lib/seo";
 
 function Login() {
   const navigate = useNavigate();
