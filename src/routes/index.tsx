@@ -372,6 +372,52 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* SEO CONTENT */}
+      <section className="py-24 md:py-32 border-t border-border bg-background">
+        <div className="mx-auto max-w-5xl px-6">
+          <Reveal><SectionLabel>About CoastalPro Marine</SectionLabel></Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="font-display text-4xl md:text-5xl mt-5 mb-8 leading-[1.05] text-balance">
+              Your full-service marine dealer <span className="italic font-normal text-muted-foreground">on the East Coast.</span>
+            </h2>
+          </Reveal>
+          <div className="prose prose-lg max-w-none text-muted-foreground font-light leading-relaxed space-y-5">
+            <p>
+              For over 27 years, CoastalPro Marine has been the trusted name for boat sales, outboard engine repower
+              and marine parts along the Eastern Seaboard. From our Wilmington, NC headquarters we serve recreational
+              captains, charter operators and commercial fleets across all 50 states with the largest in-stock inventory
+              of <strong>outboard engines from 2.5 to 350 HP</strong>, <strong>new boats</strong> from leading
+              manufacturers, and over 10,000 line items of genuine OEM parts and accessories.
+            </p>
+            <p>
+              We're an authorized dealer for the world's leading outboard brands — <strong>Yamaha, Mercury, Suzuki,
+              Honda</strong> — and partner with builders making jon boats, bass boats, pontoons, bay boats and offshore
+              center consoles. Whether you're rigging your first 14-foot jon boat or repowering a 36-footer with quad
+              350s, our master-certified technicians have done it before, often hundreds of times.
+            </p>
+            <p>
+              Beyond sales and service, we make ownership painless. Our financing partners offer competitive marine loan
+              rates with terms up to 240 months, our parts counter ships same-day to anywhere in the U.S., and our
+              winterization and spring-start packages keep your investment running for the long haul.
+            </p>
+            <h3 className="font-display text-2xl text-foreground mt-10 mb-4">What we sell and service</h3>
+            <ul className="space-y-2 list-disc pl-5">
+              <li><strong>Outboard engines:</strong> portable kickers, mid-range 4-strokes, V6 performance, V8 offshore.</li>
+              <li><strong>Boats:</strong> jon boats, bass boats, pontoons, bay boats, center consoles, walkarounds.</li>
+              <li><strong>Marine electronics:</strong> GPS chartplotters, sonar, VHF radios, autopilots, radar.</li>
+              <li><strong>Parts &amp; accessories:</strong> propellers, batteries, fuel systems, trailer parts, maintenance kits.</li>
+              <li><strong>Service:</strong> repowers, rigging, warranty work, diagnostics, winterization, on-water service.</li>
+              <li><strong>Financing:</strong> pre-approval in minutes, terms up to 240 months, trade-in equity applied.</li>
+            </ul>
+            <p className="pt-4">
+              Read what our customers say in our <Link to="/reviews" className="text-accent underline-offset-4 hover:underline">verified reviews</Link>,
+              browse the full catalog in our <Link to="/shop" className="text-accent underline-offset-4 hover:underline">shop</Link>,
+              or <Link to="/contact" className="text-accent underline-offset-4 hover:underline">get in touch</Link> with our sales team today.
+            </p>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
