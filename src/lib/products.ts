@@ -25,3 +25,9 @@ export async function fetchProducts(category?: Product["category"]) {
   if (error) throw error;
   return (data ?? []) as unknown as Product[];
 }
+
+export async function fetchProductBySlug(slug: string) {
+  const { data, error } = await supabase.from("products").select("*").eq("slug", slug).eq("active", true).maybeSingle();
+  if (error) throw error;
+  return (data ?? null) as Product | null;
+}

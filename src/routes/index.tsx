@@ -2,7 +2,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, Cog, Ship, Wrench, CreditCard, ShieldCheck, Anchor, ArrowUpRight, Quote } from "lucide-react";
+import { ArrowRight, Cog, Ship, Wrench, CreditCard, ShieldCheck, Anchor, ArrowUpRight, Quote, Award, Truck, Headphones, Sparkles, MapPin, Clock, ThumbsUp } from "lucide-react";
 import heroImg from "@/assets/hero-boat.jpg";
 import engineImg from "@/assets/engine.jpg";
 import boatImg from "@/assets/boat.jpg";
@@ -15,14 +15,17 @@ import { BrandMarquee, FloatingBadge } from "../components/BrandMarquee";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "CoastalPro Marine — Built for the Long Run" },
-      { name: "description", content: "Outboard engines from 2.5 to 350 HP, boats, parts and certified service. Financing available across the U.S." },
-      { property: "og:title", content: "CoastalPro Marine" },
-      { property: "og:description", content: "Outboard engines, boats and certified marine service." },
+      { title: "CoastalPro Marine — Outboard Engines, Boats & Marine Parts Dealer" },
+      { name: "description", content: "Authorized marine dealer since 1998. Shop outboard engines (2.5–350 HP), new boats, 10,000+ marine parts and certified service. Financing available, shipping to all 50 states." },
+      { name: "keywords", content: "marine dealer, outboard engines for sale, new boats for sale, marine parts, boat financing, certified marine service, Yamaha outboard, Mercury outboard, Suzuki outboard, fishing boats, pontoon boats" },
+      { property: "og:title", content: "CoastalPro Marine — Outboard Engines, Boats & Parts" },
+      { property: "og:description", content: "Authorized dealer of outboard engines, boats and 10,000+ marine parts. Certified service & financing." },
       { property: "og:image", content: heroImg },
+      { property: "og:type", content: "website" },
       { name: "twitter:image", content: heroImg },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://coastalpromarine.com/" }],
   }),
   component: Home,
 });
@@ -122,6 +125,68 @@ function Home() {
       </section>
 
       <BrandMarquee />
+
+      {/* FEATURES */}
+      <section className="py-24 md:py-32 bg-secondary noise relative">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+            <div>
+              <Reveal><SectionLabel>Why CoastalPro</SectionLabel></Reveal>
+              <Reveal delay={0.1} className="mt-5">
+                <h2 className="font-display text-5xl md:text-6xl leading-[1.02] text-balance max-w-2xl">
+                  Built different. <span className="italic font-normal text-muted-foreground">Backed harder.</span>
+                </h2>
+              </Reveal>
+            </div>
+            <Reveal delay={0.2} className="max-w-sm text-muted-foreground text-pretty">
+              Six reasons captains, charter operators and weekend anglers keep coming back to our docks.
+            </Reveal>
+          </div>
+
+          <StaggerGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              { i: Award, t: "Authorized Dealer", d: "Factory-authorized for Yamaha, Mercury, Suzuki, Honda and the leading boat builders." },
+              { i: Truck, t: "Nationwide Shipping", d: "Parts ship same-day. Boats and engines delivered to all 50 states." },
+              { i: ShieldCheck, t: "Master-Certified Techs", d: "Our service crew averages 15+ years on the bench. Warranty work is in-house." },
+              { i: CreditCard, t: "Flexible Financing", d: "Terms up to 240 months with the top marine lenders. Pre-approval in minutes." },
+              { i: Headphones, t: "Lifetime Support", d: "Talk to a real person. After-sale support that doesn't stop at the parking lot." },
+              { i: Sparkles, t: "Trade-Ins Welcome", d: "Honest valuations and equity applied straight to your next boat or engine." },
+            ].map(({ i: Icon, t, d }) => (
+              <StaggerItem key={t}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
+                  className="group h-full rounded-2xl bg-background border border-border p-7 hover:shadow-elevated transition-shadow duration-700 relative overflow-hidden"
+                >
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="h-12 w-12 rounded-xl bg-secondary flex items-center justify-center mb-5 group-hover:bg-accent transition-colors duration-500">
+                    <Icon className="h-5 w-5 text-accent group-hover:text-accent-foreground transition-colors duration-500" />
+                  </div>
+                  <h3 className="font-display text-2xl mb-2">{t}</h3>
+                  <p className="text-sm text-muted-foreground font-light leading-relaxed">{d}</p>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+
+          <Reveal delay={0.3} className="mt-12 grid sm:grid-cols-3 gap-4">
+            {[
+              { i: MapPin, t: "Wilmington, NC", d: "Showroom + service center" },
+              { i: Clock, t: "Mon–Sat", d: "Six days a week on the dock" },
+              { i: ThumbsUp, t: "98% recommend", d: "Verified customer reviews" },
+            ].map(({ i: Icon, t, d }) => (
+              <div key={t} className="flex items-center gap-4 rounded-xl bg-background/60 p-5 border border-border/60">
+                <Icon className="h-5 w-5 text-accent shrink-0" />
+                <div>
+                  <div className="font-semibold text-sm">{t}</div>
+                  <div className="text-xs text-muted-foreground">{d}</div>
+                </div>
+              </div>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
 
       {/* CATEGORIES */}
       <section className="py-28 md:py-40 noise relative">
@@ -304,6 +369,52 @@ function Home() {
                 transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
               />
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* SEO CONTENT */}
+      <section className="py-24 md:py-32 border-t border-border bg-background">
+        <div className="mx-auto max-w-5xl px-6">
+          <Reveal><SectionLabel>About CoastalPro Marine</SectionLabel></Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="font-display text-4xl md:text-5xl mt-5 mb-8 leading-[1.05] text-balance">
+              Your full-service marine dealer <span className="italic font-normal text-muted-foreground">on the East Coast.</span>
+            </h2>
+          </Reveal>
+          <div className="prose prose-lg max-w-none text-muted-foreground font-light leading-relaxed space-y-5">
+            <p>
+              For over 27 years, CoastalPro Marine has been the trusted name for boat sales, outboard engine repower
+              and marine parts along the Eastern Seaboard. From our Wilmington, NC headquarters we serve recreational
+              captains, charter operators and commercial fleets across all 50 states with the largest in-stock inventory
+              of <strong>outboard engines from 2.5 to 350 HP</strong>, <strong>new boats</strong> from leading
+              manufacturers, and over 10,000 line items of genuine OEM parts and accessories.
+            </p>
+            <p>
+              We're an authorized dealer for the world's leading outboard brands — <strong>Yamaha, Mercury, Suzuki,
+              Honda</strong> — and partner with builders making jon boats, bass boats, pontoons, bay boats and offshore
+              center consoles. Whether you're rigging your first 14-foot jon boat or repowering a 36-footer with quad
+              350s, our master-certified technicians have done it before, often hundreds of times.
+            </p>
+            <p>
+              Beyond sales and service, we make ownership painless. Our financing partners offer competitive marine loan
+              rates with terms up to 240 months, our parts counter ships same-day to anywhere in the U.S., and our
+              winterization and spring-start packages keep your investment running for the long haul.
+            </p>
+            <h3 className="font-display text-2xl text-foreground mt-10 mb-4">What we sell and service</h3>
+            <ul className="space-y-2 list-disc pl-5">
+              <li><strong>Outboard engines:</strong> portable kickers, mid-range 4-strokes, V6 performance, V8 offshore.</li>
+              <li><strong>Boats:</strong> jon boats, bass boats, pontoons, bay boats, center consoles, walkarounds.</li>
+              <li><strong>Marine electronics:</strong> GPS chartplotters, sonar, VHF radios, autopilots, radar.</li>
+              <li><strong>Parts &amp; accessories:</strong> propellers, batteries, fuel systems, trailer parts, maintenance kits.</li>
+              <li><strong>Service:</strong> repowers, rigging, warranty work, diagnostics, winterization, on-water service.</li>
+              <li><strong>Financing:</strong> pre-approval in minutes, terms up to 240 months, trade-in equity applied.</li>
+            </ul>
+            <p className="pt-4">
+              Read what our customers say in our <Link to="/reviews" className="text-accent underline-offset-4 hover:underline">verified reviews</Link>,
+              browse the full catalog in our <Link to="/shop" className="text-accent underline-offset-4 hover:underline">shop</Link>,
+              or <Link to="/contact" className="text-accent underline-offset-4 hover:underline">get in touch</Link> with our sales team today.
+            </p>
           </div>
         </div>
       </section>

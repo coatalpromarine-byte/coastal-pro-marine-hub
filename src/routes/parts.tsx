@@ -13,11 +13,16 @@ import { ProductDetailModal } from "@/components/ProductDetailModal";
 export const Route = createFileRoute("/parts")({
   head: () => ({
     meta: [
-      { title: "Marine Parts & Accessories | CoastalPro Marine" },
-      { name: "description", content: "Propellers, batteries, fuel systems, electronics, trailers and maintenance kits. 10,000+ parts in stock, shipped nationwide." },
-      { property: "og:title", content: "Marine Parts | CoastalPro Marine" },
-      { property: "og:description", content: "10,000+ parts shipped nationwide." },
+      { title: "Marine Parts & Boat Accessories — 10,000+ In Stock | CoastalPro Marine" },
+      { name: "description", content: "Shop marine parts online: propellers, batteries, fuel systems, electronics, trailers and maintenance kits. 10,000+ items in stock with same-day shipping nationwide." },
+      { name: "keywords", content: "marine parts, boat parts online, boat propellers, marine batteries, marine electronics, fuel systems, boat trailer parts, OEM marine parts, boat accessories, marine maintenance" },
+      { property: "og:title", content: "Marine Parts & Accessories | CoastalPro Marine" },
+      { property: "og:description", content: "10,000+ marine parts shipped same-day nationwide." },
+      { property: "og:image", content: partsImg },
+      { name: "twitter:image", content: partsImg },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://coastalpromarine.com/parts" }],
   }),
   component: Parts,
 });

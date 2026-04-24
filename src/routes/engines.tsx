@@ -13,11 +13,16 @@ import { ProductDetailModal } from "@/components/ProductDetailModal";
 export const Route = createFileRoute("/engines")({
   head: () => ({
     meta: [
-      { title: "Outboard Engines 2.5–350 HP | CoastalPro Marine" },
-      { name: "description", content: "Portable kickers to offshore powerhouses. Authorized dealer for the leading outboard brands." },
+      { title: "Outboard Engines For Sale 2.5–350 HP | Yamaha, Mercury, Suzuki | CoastalPro Marine" },
+      { name: "description", content: "Authorized dealer for Yamaha, Mercury, Suzuki and Honda outboard engines from 2.5 to 350 HP. Portable kickers, mid-range 4-strokes, V6 performance and V8 offshore powerheads." },
+      { name: "keywords", content: "outboard engines for sale, Yamaha outboard, Mercury outboard, Suzuki outboard, Honda outboard, 4-stroke outboard, V6 outboard, repower marine engine, 350 HP outboard, kicker motor" },
       { property: "og:title", content: "Outboard Engines | CoastalPro Marine" },
-      { property: "og:description", content: "Portable to offshore — 2.5 to 350 HP outboard engines." },
+      { property: "og:description", content: "2.5 to 350 HP outboards from every major brand. Authorized dealer." },
+      { property: "og:image", content: engineImg },
+      { name: "twitter:image", content: engineImg },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://coastalpromarine.com/engines" }],
   }),
   component: Engines,
 });

@@ -9,11 +9,16 @@ import serviceImg from "@/assets/service.jpg";
 export const Route = createFileRoute("/service")({
   head: () => ({
     meta: [
-      { title: "Certified Marine Service | CoastalPro Marine" },
-      { name: "description", content: "Master-certified marine technicians. Repowers, warranty work, winterization and on-water diagnostics." },
-      { property: "og:title", content: "Marine Service | CoastalPro Marine" },
-      { property: "og:description", content: "Certified marine techs. Repowers, warranty, winterization." },
+      { title: "Marine Service Center — Repowers, Warranty & Winterization | CoastalPro Marine" },
+      { name: "description", content: "Master-certified marine technicians for outboard repowers, factory warranty work, winterization, diagnostics and on-water service. 27 years on the bench." },
+      { name: "keywords", content: "marine service, outboard repower, boat repair, marine warranty service, winterization, mobile marine mechanic, marine diagnostics, boat maintenance, certified marine technician" },
+      { property: "og:title", content: "Marine Service Center | CoastalPro Marine" },
+      { property: "og:description", content: "Repowers, warranty, winterization and on-water diagnostics." },
+      { property: "og:image", content: serviceImg },
+      { name: "twitter:image", content: serviceImg },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://coastalpromarine.com/service" }],
   }),
   component: Service,
 });
