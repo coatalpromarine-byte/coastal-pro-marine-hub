@@ -1,5 +1,5 @@
-"use client";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import { useSeo } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, Cog, Ship, Wrench, CreditCard, ShieldCheck, Anchor, ArrowUpRight, Quote, Award, Truck, Headphones, Sparkles, MapPin, Clock, ThumbsUp } from "lucide-react";
@@ -12,24 +12,6 @@ import { Reveal, SplitHeading, StaggerGroup, StaggerItem } from "../components/M
 import { SectionLabel } from "../components/Section";
 import { BrandMarquee, FloatingBadge } from "../components/BrandMarquee";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "CoastalPro Marine — Outboard Engines, Boats & Marine Parts Dealer" },
-      { name: "description", content: "Authorized marine dealer since 1998. Shop outboard engines (2.5–350 HP), new boats, 10,000+ marine parts and certified service. Financing available, shipping to all 50 states." },
-      { name: "keywords", content: "marine dealer, outboard engines for sale, new boats for sale, marine parts, boat financing, certified marine service, Yamaha outboard, Mercury outboard, Suzuki outboard, fishing boats, pontoon boats" },
-      { property: "og:title", content: "CoastalPro Marine — Outboard Engines, Boats & Parts" },
-      { property: "og:description", content: "Authorized dealer of outboard engines, boats and 10,000+ marine parts. Certified service & financing." },
-      { property: "og:image", content: heroImg },
-      { property: "og:type", content: "website" },
-      { name: "twitter:image", content: heroImg },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "https://coastalpromarine.com/" }],
-  }),
-  component: Home,
-});
-
 const categories = [
   { to: "/engines", label: "Outboard Engines", desc: "2.5 — 350 HP", img: engineImg, icon: Cog, no: "01" },
   { to: "/boats", label: "Boats", desc: "Jon · Bass · Pontoon · Center Console", img: boatImg, icon: Ship, no: "02" },
@@ -37,6 +19,18 @@ const categories = [
 ] as const;
 
 function Home() {
+  useSeo({
+    title: "CoastalPro Marine — Outboard Engines, Boats & Marine Parts Dealer",
+    description: "Authorized marine dealer since 1998. Shop outboard engines (2.5–350 HP), new boats, 10,000+ marine parts and certified service. Financing available, shipping to all 50 states.",
+    keywords: "marine dealer, outboard engines for sale, new boats for sale, marine parts, boat financing, certified marine service, Yamaha outboard, Mercury outboard, Suzuki outboard, fishing boats, pontoon boats",
+    ogTitle: "CoastalPro Marine — Outboard Engines, Boats & Parts",
+    ogDescription: "Authorized dealer of outboard engines, boats and 10,000+ marine parts. Certified service & financing.",
+    ogImage: heroImg,
+    ogType: "website",
+    twitterImage: heroImg,
+    twitterCard: "summary_large_image",
+    canonical: "https://coastalpromarine.com/",
+  });
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
@@ -421,3 +415,5 @@ function Home() {
     </>
   );
 }
+
+export default Home;

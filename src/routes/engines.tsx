@@ -1,6 +1,6 @@
-"use client";
 import { useEffect, useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { useSeo } from "@/lib/seo";
+import { Link } from "react-router-dom";
 import { PageHero, Container, SectionLabel } from "../components/Section";
 import { Reveal, StaggerGroup, StaggerItem } from "../components/Motion";
 import { Check, ArrowRight, Loader2 } from "lucide-react";
@@ -9,23 +9,6 @@ import engineImg from "@/assets/engine.jpg";
 import { fetchProducts, type Product } from "@/lib/products";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductDetailModal } from "@/components/ProductDetailModal";
-
-export const Route = createFileRoute("/engines")({
-  head: () => ({
-    meta: [
-      { title: "Outboard Engines For Sale 2.5–350 HP | Yamaha, Mercury, Suzuki | CoastalPro Marine" },
-      { name: "description", content: "Authorized dealer for Yamaha, Mercury, Suzuki and Honda outboard engines from 2.5 to 350 HP. Portable kickers, mid-range 4-strokes, V6 performance and V8 offshore powerheads." },
-      { name: "keywords", content: "outboard engines for sale, Yamaha outboard, Mercury outboard, Suzuki outboard, Honda outboard, 4-stroke outboard, V6 outboard, repower marine engine, 350 HP outboard, kicker motor" },
-      { property: "og:title", content: "Outboard Engines | CoastalPro Marine" },
-      { property: "og:description", content: "2.5 to 350 HP outboards from every major brand. Authorized dealer." },
-      { property: "og:image", content: engineImg },
-      { name: "twitter:image", content: engineImg },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "https://coastalpromarine.com/engines" }],
-  }),
-  component: Engines,
-});
 
 const tiers = [
   {
@@ -59,6 +42,17 @@ const tiers = [
 ];
 
 function Engines() {
+  useSeo({
+    title: "Outboard Engines For Sale 2.5–350 HP | Yamaha, Mercury, Suzuki | CoastalPro Marine",
+    description: "Authorized dealer for Yamaha, Mercury, Suzuki and Honda outboard engines from 2.5 to 350 HP. Portable kickers, mid-range 4-strokes, V6 performance and V8 offshore powerheads.",
+    keywords: "outboard engines for sale, Yamaha outboard, Mercury outboard, Suzuki outboard, Honda outboard, 4-stroke outboard, V6 outboard, repower marine engine, 350 HP outboard, kicker motor",
+    ogTitle: "Outboard Engines | CoastalPro Marine",
+    ogDescription: "2.5 to 350 HP outboards from every major brand. Authorized dealer.",
+    ogImage: engineImg,
+    twitterImage: engineImg,
+    twitterCard: "summary_large_image",
+    canonical: "https://coastalpromarine.com/engines",
+  });
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [active, setActive] = useState<Product | null>(null);
@@ -140,3 +134,5 @@ function Engines() {
     </>
   );
 }
+
+export default Engines;

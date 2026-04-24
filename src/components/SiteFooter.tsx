@@ -1,5 +1,4 @@
-"use client";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { Anchor, Mail, MapPin, Phone, Instagram, Facebook, Youtube } from "lucide-react";
 import { motion } from "framer-motion";
 

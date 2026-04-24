@@ -1,5 +1,4 @@
-"use client";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
@@ -7,11 +6,7 @@ import { Container } from "@/components/Section";
 import { Loader2, Plus, Pencil, Trash2, X, Upload, Star } from "lucide-react";
 import { toast } from "sonner";
 import type { Product } from "@/lib/products";
-
-export const Route = createFileRoute("/admin")({
-  head: () => ({ meta: [{ title: "Admin Panel | CoastalPro Marine" }] }),
-  component: Admin,
-});
+import { useSeo } from "@/lib/seo";
 
 type Draft = {
   id?: string;
@@ -49,6 +44,7 @@ function slugify(s: string) {
 }
 
 function Admin() {
+  useSeo({ title: "Admin Panel | CoastalPro Marine" });
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
   const [products, setProducts] = useState<Product[]>([]);
@@ -56,7 +52,7 @@ function Admin() {
   const [editing, setEditing] = useState<Draft | null>(null);
 
   useEffect(() => {
-    if (!authLoading && !user) navigate({ to: "/login" });
+    if (!authLoading && !user) navigate("/login");
   }, [user, authLoading, navigate]);
 
   const load = async () => {
@@ -82,7 +78,7 @@ function Admin() {
     else { toast.success("Deleted"); load(); }
   };
 
-  const signOut = async () => { await supabase.auth.signOut(); navigate({ to: "/" }); };
+  const signOut = async () => { await supabase.auth.signOut(); navigate("/"); };
 
   return (
     <section className="py-20 md:py-28 min-h-[80vh]">
@@ -314,3 +310,5 @@ function Sel({ label, value, onChange, options }: { label: string; value: string
     </div>
   );
 }
+
+export default Admin;

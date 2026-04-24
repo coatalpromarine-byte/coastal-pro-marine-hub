@@ -1,22 +1,8 @@
-"use client";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import { useSeo } from "@/lib/seo";
 import { PageHero, Container, SectionLabel } from "../components/Section";
 import { Reveal, StaggerGroup, StaggerItem } from "../components/Motion";
 import { Star, ArrowRight } from "lucide-react";
-
-export const Route = createFileRoute("/reviews")({
-  head: () => ({
-    meta: [
-      { title: "Customer Reviews & Marine Boat Buyer Testimonials | CoastalPro Marine" },
-      { name: "description", content: "Read 30+ verified customer reviews from boat buyers, outboard engine owners and marine parts customers. Real stories from captains across the U.S." },
-      { name: "keywords", content: "marine dealer reviews, boat buyer testimonials, outboard engine reviews, boat dealer ratings, CoastalPro reviews, customer testimonials marine" },
-      { property: "og:title", content: "Customer Reviews | CoastalPro Marine" },
-      { property: "og:description", content: "30+ verified customer testimonials from real CoastalPro buyers." },
-    ],
-    links: [{ rel: "canonical", href: "https://coastalpromarine.com/reviews" }],
-  }),
-  component: Reviews,
-});
 
 const reviews = [
   { name: "James Reynolds", loc: "Wilmington, NC", product: "Yamaha F250 Outboard", rating: 5, text: "Smooth repower from start to finish. Their crew rigged twin F250s on my 28-footer and tuned everything dialed in for offshore. Couldn't ask for better." },
@@ -60,6 +46,14 @@ const avatars = (() => {
 })();
 
 function Reviews() {
+  useSeo({
+    title: "Customer Reviews & Marine Boat Buyer Testimonials | CoastalPro Marine",
+    description: "Read 30+ verified customer reviews from boat buyers, outboard engine owners and marine parts customers. Real stories from captains across the U.S.",
+    keywords: "marine dealer reviews, boat buyer testimonials, outboard engine reviews, boat dealer ratings, CoastalPro reviews, customer testimonials marine",
+    ogTitle: "Customer Reviews | CoastalPro Marine",
+    ogDescription: "30+ verified customer testimonials from real CoastalPro buyers.",
+    canonical: "https://coastalpromarine.com/reviews",
+  });
   const avg = (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1);
   return (
     <>
@@ -143,3 +137,5 @@ function Reviews() {
     </>
   );
 }
+
+export default Reviews;

@@ -1,26 +1,12 @@
-"use client";
-import { createFileRoute } from "@tanstack/react-router";
+
 import { useState } from "react";
+import { useSeo } from "@/lib/seo";
 import { PageHero, Container, SectionLabel } from "../components/Section";
 import { Reveal, StaggerGroup, StaggerItem } from "../components/Motion";
 import { MapPin, Phone, Mail, Clock, Send, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, FORMSUBMIT_AJAX } from "@/lib/constants";
 import { toast } from "sonner";
-
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact CoastalPro Marine — Wilmington NC Boat Dealer" },
-      { name: "description", content: "Visit our Wilmington, NC showroom or contact our sales, parts and certified service teams. Open Mon–Sat. Sea trials and quotes by appointment." },
-      { name: "keywords", content: "marine dealer contact, Wilmington NC boat dealer, marine service appointment, boat sales contact, outboard quote request" },
-      { property: "og:title", content: "Contact | CoastalPro Marine" },
-      { property: "og:description", content: "Visit our Wilmington, NC showroom or reach our sales, parts and service teams." },
-    ],
-    links: [{ rel: "canonical", href: "https://coastalpromarine.com/contact" }],
-  }),
-  component: Contact,
-});
 
 const info = [
   { i: MapPin, t: "Showroom & Service", d: "2400 Harbor Way\nWilmington, NC 28401" },
@@ -30,6 +16,14 @@ const info = [
 ];
 
 function Contact() {
+  useSeo({
+    title: "Contact CoastalPro Marine — Wilmington NC Boat Dealer",
+    description: "Visit our Wilmington, NC showroom or contact our sales, parts and certified service teams. Open Mon–Sat. Sea trials and quotes by appointment.",
+    keywords: "marine dealer contact, Wilmington NC boat dealer, marine service appointment, boat sales contact, outboard quote request",
+    ogTitle: "Contact | CoastalPro Marine",
+    ogDescription: "Visit our Wilmington, NC showroom or reach our sales, parts and service teams.",
+    canonical: "https://coastalpromarine.com/contact",
+  });
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -131,3 +125,5 @@ function Contact() {
     </>
   );
 }
+
+export default Contact;

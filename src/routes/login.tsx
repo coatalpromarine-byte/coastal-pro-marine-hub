@@ -1,17 +1,13 @@
-"use client";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Container } from "@/components/Section";
 import { Loader2, Lock } from "lucide-react";
 import { toast } from "sonner";
-
-export const Route = createFileRoute("/login")({
-  head: () => ({ meta: [{ title: "Admin Login | CoastalPro Marine" }] }),
-  component: Login,
-});
+import { useSeo } from "@/lib/seo";
 
 function Login() {
+  useSeo({ title: "Admin Login | CoastalPro Marine" });
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +23,7 @@ function Login() {
       return;
     }
     toast.success("Signed in");
-    navigate({ to: "/admin" });
+    navigate("/admin");
   };
 
   return (
@@ -57,3 +53,5 @@ function Login() {
     </section>
   );
 }
+
+export default Login;

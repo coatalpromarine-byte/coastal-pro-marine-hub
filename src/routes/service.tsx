@@ -1,27 +1,10 @@
-"use client";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import { useSeo } from "@/lib/seo";
 import { PageHero, Container, SectionLabel } from "../components/Section";
 import { Reveal, StaggerGroup, StaggerItem } from "../components/Motion";
 import { ShieldCheck, Wrench, Snowflake, Activity, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import serviceImg from "@/assets/service.jpg";
-
-export const Route = createFileRoute("/service")({
-  head: () => ({
-    meta: [
-      { title: "Marine Service Center — Repowers, Warranty & Winterization | CoastalPro Marine" },
-      { name: "description", content: "Master-certified marine technicians for outboard repowers, factory warranty work, winterization, diagnostics and on-water service. 27 years on the bench." },
-      { name: "keywords", content: "marine service, outboard repower, boat repair, marine warranty service, winterization, mobile marine mechanic, marine diagnostics, boat maintenance, certified marine technician" },
-      { property: "og:title", content: "Marine Service Center | CoastalPro Marine" },
-      { property: "og:description", content: "Repowers, warranty, winterization and on-water diagnostics." },
-      { property: "og:image", content: serviceImg },
-      { name: "twitter:image", content: serviceImg },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "https://coastalpromarine.com/service" }],
-  }),
-  component: Service,
-});
 
 const services = [
   { i: Wrench, n: "Repowers & Rigging", d: "Full engine swaps, controls, gauges and steering. Done right the first time.", no: "01" },
@@ -31,6 +14,17 @@ const services = [
 ];
 
 function Service() {
+  useSeo({
+    title: "Marine Service Center — Repowers, Warranty & Winterization | CoastalPro Marine",
+    description: "Master-certified marine technicians for outboard repowers, factory warranty work, winterization, diagnostics and on-water service. 27 years on the bench.",
+    keywords: "marine service, outboard repower, boat repair, marine warranty service, winterization, mobile marine mechanic, marine diagnostics, boat maintenance, certified marine technician",
+    ogTitle: "Marine Service Center | CoastalPro Marine",
+    ogDescription: "Repowers, warranty, winterization and on-water diagnostics.",
+    ogImage: serviceImg,
+    twitterImage: serviceImg,
+    twitterCard: "summary_large_image",
+    canonical: "https://coastalpromarine.com/service",
+  });
   return (
     <>
       <PageHero
@@ -76,3 +70,5 @@ function Service() {
     </>
   );
 }
+
+export default Service;
