@@ -1,6 +1,6 @@
-"use client";
 import { useEffect, useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { useSeo } from "@/lib/seo";
+import { Link } from "react-router-dom";
 import { PageHero, Container, SectionLabel } from "../components/Section";
 import { Reveal, StaggerGroup, StaggerItem } from "../components/Motion";
 import { ArrowRight, Users, Fish, Compass, Anchor, Loader2 } from "lucide-react";
@@ -10,23 +10,6 @@ import { fetchProducts, type Product } from "@/lib/products";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductDetailModal } from "@/components/ProductDetailModal";
 
-export const Route = createFileRoute("/boats")({
-  head: () => ({
-    meta: [
-      { title: "New Boats For Sale — Jon, Bass, Pontoon & Center Console | CoastalPro Marine" },
-      { name: "description", content: "Shop new boats for sale: jon boats, bass boats, pontoons and offshore center consoles from 10 to 36 ft. Authorized dealer with sea trials and trade-ins welcome." },
-      { name: "keywords", content: "boats for sale, jon boats, bass boats, pontoon boats, center console boats, fishing boats, new boats, boat dealer NC, offshore boats, aluminum boats" },
-      { property: "og:title", content: "Boats For Sale | CoastalPro Marine" },
-      { property: "og:description", content: "Jon boats, bass boats, pontoons and center consoles. Sea trials available." },
-      { property: "og:image", content: boatImg },
-      { name: "twitter:image", content: boatImg },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "https://coastalpromarine.com/boats" }],
-  }),
-  component: Boats,
-});
-
 const lines = [
   { name: "Jon Boats", use: "Backwater & utility", len: "10 – 18 ft", price: "from $2,990", icon: Anchor, desc: "Aluminum flat-bottom hulls built for shallow creeks, pond fishing and heavy-duty work." },
   { name: "Bass Boats", use: "Tournament fishing", len: "17 – 21 ft", price: "from $24,900", icon: Fish, desc: "Lightning-fast fiberglass with aerated livewells, rod lockers and tournament-grade electronics." },
@@ -35,6 +18,17 @@ const lines = [
 ];
 
 function Boats() {
+  useSeo({
+    title: "New Boats For Sale — Jon, Bass, Pontoon & Center Console | CoastalPro Marine",
+    description: "Shop new boats for sale: jon boats, bass boats, pontoons and offshore center consoles from 10 to 36 ft. Authorized dealer with sea trials and trade-ins welcome.",
+    keywords: "boats for sale, jon boats, bass boats, pontoon boats, center console boats, fishing boats, new boats, boat dealer NC, offshore boats, aluminum boats",
+    ogTitle: "Boats For Sale | CoastalPro Marine",
+    ogDescription: "Jon boats, bass boats, pontoons and center consoles. Sea trials available.",
+    ogImage: boatImg,
+    twitterImage: boatImg,
+    twitterCard: "summary_large_image",
+    canonical: "https://coastalpromarine.com/boats",
+  });
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [active, setActive] = useState<Product | null>(null);
@@ -132,3 +126,5 @@ function Boats() {
     </>
   );
 }
+
+export default Boats;

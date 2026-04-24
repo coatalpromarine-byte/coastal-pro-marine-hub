@@ -1,6 +1,6 @@
-"use client";
 import { useEffect, useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { useSeo } from "@/lib/seo";
+
 import { PageHero, Container, SectionLabel } from "../components/Section";
 import { Reveal, StaggerGroup, StaggerItem } from "../components/Motion";
 import { Battery, Compass, Cog, Fuel, Truck, Wrench, Loader2 } from "lucide-react";
@@ -9,23 +9,6 @@ import partsImg from "@/assets/parts.jpg";
 import { fetchProducts, type Product } from "@/lib/products";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductDetailModal } from "@/components/ProductDetailModal";
-
-export const Route = createFileRoute("/parts")({
-  head: () => ({
-    meta: [
-      { title: "Marine Parts & Boat Accessories — 10,000+ In Stock | CoastalPro Marine" },
-      { name: "description", content: "Shop marine parts online: propellers, batteries, fuel systems, electronics, trailers and maintenance kits. 10,000+ items in stock with same-day shipping nationwide." },
-      { name: "keywords", content: "marine parts, boat parts online, boat propellers, marine batteries, marine electronics, fuel systems, boat trailer parts, OEM marine parts, boat accessories, marine maintenance" },
-      { property: "og:title", content: "Marine Parts & Accessories | CoastalPro Marine" },
-      { property: "og:description", content: "10,000+ marine parts shipped same-day nationwide." },
-      { property: "og:image", content: partsImg },
-      { name: "twitter:image", content: partsImg },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "https://coastalpromarine.com/parts" }],
-  }),
-  component: Parts,
-});
 
 const cats = [
   { i: Cog, n: "Propellers", c: "Aluminum, stainless, 3 & 4 blade", count: "1,200+" },
@@ -37,6 +20,17 @@ const cats = [
 ];
 
 function Parts() {
+  useSeo({
+    title: "Marine Parts & Boat Accessories — 10,000+ In Stock | CoastalPro Marine",
+    description: "Shop marine parts online: propellers, batteries, fuel systems, electronics, trailers and maintenance kits. 10,000+ items in stock with same-day shipping nationwide.",
+    keywords: "marine parts, boat parts online, boat propellers, marine batteries, marine electronics, fuel systems, boat trailer parts, OEM marine parts, boat accessories, marine maintenance",
+    ogTitle: "Marine Parts & Accessories | CoastalPro Marine",
+    ogDescription: "10,000+ marine parts shipped same-day nationwide.",
+    ogImage: partsImg,
+    twitterImage: partsImg,
+    twitterCard: "summary_large_image",
+    canonical: "https://coastalpromarine.com/parts",
+  });
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [active, setActive] = useState<Product | null>(null);
@@ -108,3 +102,5 @@ function Parts() {
     </>
   );
 }
+
+export default Parts;

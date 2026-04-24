@@ -1,6 +1,6 @@
-"use client";
 import { useEffect, useMemo, useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { useSeo } from "@/lib/seo";
+
 import { PageHero, Container, SectionLabel } from "../components/Section";
 import { Reveal, StaggerGroup, StaggerItem } from "../components/Motion";
 import { Loader2, Search } from "lucide-react";
@@ -15,24 +15,18 @@ const CATS = [
   { key: "parts", label: "Parts" },
 ] as const;
 
-export const Route = createFileRoute("/shop")({
-  head: () => ({
-    meta: [
-      { title: "Shop Marine Boats, Outboard Engines & Parts Online | CoastalPro Marine" },
-      { name: "description", content: "Browse the full CoastalPro Marine catalog: new boats, outboard engines from 2.5 to 350 HP, propellers, batteries, electronics and 10,000+ marine parts shipped nationwide." },
-      { name: "keywords", content: "shop marine boats, outboard engines for sale, marine parts online, boat propellers, marine batteries, fishing boats, pontoon boats, center console boats, marine accessories" },
-      { property: "og:title", content: "Shop — CoastalPro Marine" },
-      { property: "og:description", content: "The full catalog: boats, engines, parts and accessories." },
-      { property: "og:image", content: heroImg },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: heroImg },
-    ],
-    links: [{ rel: "canonical", href: "https://coastalpromarine.com/shop" }],
-  }),
-  component: Shop,
-});
-
 function Shop() {
+  useSeo({
+    title: "Shop Marine Boats, Outboard Engines & Parts Online | CoastalPro Marine",
+    description: "Browse the full CoastalPro Marine catalog: new boats, outboard engines from 2.5 to 350 HP, propellers, batteries, electronics and 10,000+ marine parts shipped nationwide.",
+    keywords: "shop marine boats, outboard engines for sale, marine parts online, boat propellers, marine batteries, fishing boats, pontoon boats, center console boats, marine accessories",
+    ogTitle: "Shop — CoastalPro Marine",
+    ogDescription: "The full catalog: boats, engines, parts and accessories.",
+    ogImage: heroImg,
+    twitterCard: "summary_large_image",
+    twitterImage: heroImg,
+    canonical: "https://coastalpromarine.com/shop",
+  });
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [cat, setCat] = useState<(typeof CATS)[number]["key"]>("all");
@@ -119,3 +113,5 @@ function Shop() {
     </>
   );
 }
+
+export default Shop;
