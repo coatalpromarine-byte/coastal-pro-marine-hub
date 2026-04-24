@@ -1,29 +1,24 @@
-"use client";
 import { useEffect, useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link, useParams } from "react-router-dom";
 import { Container, SectionLabel } from "../components/Section";
 import { Reveal, StaggerGroup, StaggerItem } from "../components/Motion";
 import { Loader2, ShoppingCart, ChevronLeft, ChevronRight, ArrowLeft, Check } from "lucide-react";
 import { fetchProductBySlug, fetchProducts, type Product } from "@/lib/products";
 import { ProductCard } from "@/components/ProductCard";
 import { useCart } from "@/contexts/CartContext";
-
-export const Route = createFileRoute("/product/$slug")({
-  head: ({ params }) => ({
-    meta: [
-      { title: `${params.slug.replace(/-/g, " ")} | CoastalPro Marine` },
-      { name: "description", content: `Detailed specs, photos and pricing for ${params.slug.replace(/-/g, " ")} at CoastalPro Marine.` },
-      { name: "keywords", content: `${params.slug.replace(/-/g, " ")}, marine product, buy outboard engine, marine boat for sale, marine parts` },
-      { property: "og:title", content: `${params.slug.replace(/-/g, " ")} | CoastalPro Marine` },
-      { property: "og:description", content: `Detailed specs and photos for ${params.slug.replace(/-/g, " ")}.` },
-    ],
-    links: [{ rel: "canonical", href: `https://coastalpromarine.com/product/${params.slug}` }],
-  }),
-  component: ProductPage,
-});
+import { useSeo } from "@/lib/seo";
 
 function ProductPage() {
-  const { slug } = Route.useParams();
+  const { slug = "" } = useParams<{ slug: string }>();
+  const pretty = slug.replace(/-/g, " ");
+  useSeo({
+    title: `${pretty} | CoastalPro Marine`,
+    description: `Detailed specs, photos and pricing for ${pretty} at CoastalPro Marine.`,
+    keywords: `${pretty}, marine product, buy outboard engine, marine boat for sale, marine parts`,
+    ogTitle: `${pretty} | CoastalPro Marine`,
+    ogDescription: `Detailed specs and photos for ${pretty}.`,
+    canonical: `https://coastalpromarine.com/product/${slug}`,
+  });
   const { add } = useCart();
   const [product, setProduct] = useState<Product | null>(null);
   const [related, setRelated] = useState<Product[]>([]);
