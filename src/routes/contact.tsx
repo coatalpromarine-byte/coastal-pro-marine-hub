@@ -11,11 +11,13 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact CoastalPro Marine" },
-      { name: "description", content: "Visit our showroom in Wilmington, NC or reach our sales, parts and service teams." },
+      { title: "Contact CoastalPro Marine — Wilmington NC Boat Dealer" },
+      { name: "description", content: "Visit our Wilmington, NC showroom or contact our sales, parts and certified service teams. Open Mon–Sat. Sea trials and quotes by appointment." },
+      { name: "keywords", content: "marine dealer contact, Wilmington NC boat dealer, marine service appointment, boat sales contact, outboard quote request" },
       { property: "og:title", content: "Contact | CoastalPro Marine" },
-      { property: "og:description", content: "Reach our sales, parts and service teams." },
+      { property: "og:description", content: "Visit our Wilmington, NC showroom or reach our sales, parts and service teams." },
     ],
+    links: [{ rel: "canonical", href: "https://coastalpromarine.com/contact" }],
   }),
   component: Contact,
 });

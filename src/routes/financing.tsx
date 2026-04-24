@@ -8,11 +8,13 @@ import { motion } from "framer-motion";
 export const Route = createFileRoute("/financing")({
   head: () => ({
     meta: [
-      { title: "Boat & Engine Financing | CoastalPro Marine" },
-      { name: "description", content: "Flexible marine financing with terms up to 240 months. Apply online, get approved fast." },
+      { title: "Boat Loans & Marine Financing — Up to 240 Months | CoastalPro Marine" },
+      { name: "description", content: "Finance your boat or outboard engine with competitive marine loan rates. Terms up to 240 months, online pre-approval in minutes, trade-in equity welcome." },
+      { name: "keywords", content: "boat financing, marine loan, boat loan rates, finance outboard engine, marine lender, boat loan calculator, RV marine financing, low rate boat loan" },
       { property: "og:title", content: "Marine Financing | CoastalPro Marine" },
-      { property: "og:description", content: "Flexible terms up to 240 months. Apply online." },
+      { property: "og:description", content: "Flexible terms up to 240 months. Apply online for pre-approval in minutes." },
     ],
+    links: [{ rel: "canonical", href: "https://coastalpromarine.com/financing" }],
   }),
   component: Financing,
 });

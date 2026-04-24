@@ -13,14 +13,16 @@ import { ProductDetailModal } from "@/components/ProductDetailModal";
 export const Route = createFileRoute("/boats")({
   head: () => ({
     meta: [
-      { title: "Boats — Jon, Bass, Pontoon, Center Console | CoastalPro Marine" },
-      { name: "description", content: "Shop new boats from trusted manufacturers. Jon boats, bass boats, pontoons and offshore center consoles." },
-      { property: "og:title", content: "Boats | CoastalPro Marine" },
-      { property: "og:description", content: "Jon boats, bass boats, pontoons and center consoles." },
+      { title: "New Boats For Sale — Jon, Bass, Pontoon & Center Console | CoastalPro Marine" },
+      { name: "description", content: "Shop new boats for sale: jon boats, bass boats, pontoons and offshore center consoles from 10 to 36 ft. Authorized dealer with sea trials and trade-ins welcome." },
+      { name: "keywords", content: "boats for sale, jon boats, bass boats, pontoon boats, center console boats, fishing boats, new boats, boat dealer NC, offshore boats, aluminum boats" },
+      { property: "og:title", content: "Boats For Sale | CoastalPro Marine" },
+      { property: "og:description", content: "Jon boats, bass boats, pontoons and center consoles. Sea trials available." },
       { property: "og:image", content: boatImg },
       { name: "twitter:image", content: boatImg },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://coastalpromarine.com/boats" }],
   }),
   component: Boats,
 });
