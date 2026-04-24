@@ -126,6 +126,68 @@ function Home() {
 
       <BrandMarquee />
 
+      {/* FEATURES */}
+      <section className="py-24 md:py-32 bg-secondary noise relative">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+            <div>
+              <Reveal><SectionLabel>Why CoastalPro</SectionLabel></Reveal>
+              <Reveal delay={0.1} className="mt-5">
+                <h2 className="font-display text-5xl md:text-6xl leading-[1.02] text-balance max-w-2xl">
+                  Built different. <span className="italic font-normal text-muted-foreground">Backed harder.</span>
+                </h2>
+              </Reveal>
+            </div>
+            <Reveal delay={0.2} className="max-w-sm text-muted-foreground text-pretty">
+              Six reasons captains, charter operators and weekend anglers keep coming back to our docks.
+            </Reveal>
+          </div>
+
+          <StaggerGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              { i: Award, t: "Authorized Dealer", d: "Factory-authorized for Yamaha, Mercury, Suzuki, Honda and the leading boat builders." },
+              { i: Truck, t: "Nationwide Shipping", d: "Parts ship same-day. Boats and engines delivered to all 50 states." },
+              { i: ShieldCheck, t: "Master-Certified Techs", d: "Our service crew averages 15+ years on the bench. Warranty work is in-house." },
+              { i: CreditCard, t: "Flexible Financing", d: "Terms up to 240 months with the top marine lenders. Pre-approval in minutes." },
+              { i: Headphones, t: "Lifetime Support", d: "Talk to a real person. After-sale support that doesn't stop at the parking lot." },
+              { i: Sparkles, t: "Trade-Ins Welcome", d: "Honest valuations and equity applied straight to your next boat or engine." },
+            ].map(({ i: Icon, t, d }) => (
+              <StaggerItem key={t}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
+                  className="group h-full rounded-2xl bg-background border border-border p-7 hover:shadow-elevated transition-shadow duration-700 relative overflow-hidden"
+                >
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="h-12 w-12 rounded-xl bg-secondary flex items-center justify-center mb-5 group-hover:bg-accent transition-colors duration-500">
+                    <Icon className="h-5 w-5 text-accent group-hover:text-accent-foreground transition-colors duration-500" />
+                  </div>
+                  <h3 className="font-display text-2xl mb-2">{t}</h3>
+                  <p className="text-sm text-muted-foreground font-light leading-relaxed">{d}</p>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+
+          <Reveal delay={0.3} className="mt-12 grid sm:grid-cols-3 gap-4">
+            {[
+              { i: MapPin, t: "Wilmington, NC", d: "Showroom + service center" },
+              { i: Clock, t: "Mon–Sat", d: "Six days a week on the dock" },
+              { i: ThumbsUp, t: "98% recommend", d: "Verified customer reviews" },
+            ].map(({ i: Icon, t, d }) => (
+              <div key={t} className="flex items-center gap-4 rounded-xl bg-background/60 p-5 border border-border/60">
+                <Icon className="h-5 w-5 text-accent shrink-0" />
+                <div>
+                  <div className="font-semibold text-sm">{t}</div>
+                  <div className="text-xs text-muted-foreground">{d}</div>
+                </div>
+              </div>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+
       {/* CATEGORIES */}
       <section className="py-28 md:py-40 noise relative">
         <div className="mx-auto max-w-7xl px-6">
