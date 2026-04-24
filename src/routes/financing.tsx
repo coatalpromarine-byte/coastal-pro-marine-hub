@@ -175,10 +175,10 @@ function fmt(n: number) {
 function Financing() {
   useSeo({
     title: "Boat & Outboard Financing — 0% APR Available | CoastalPro Marine",
-    description: "Finance your outboard engine, boat, or marine parts with 0% APR for 12 months or terms up to 60 months. Soft credit pull, same-day decisions, no prepayment penalty.",,
-    keywords: "boat financing, 0 APR boat loan, outboard engine financing, marine loan calculator, boat loan rates, finance marine parts, trade in boat motor, commercial fleet financing, no hard credit pull boat loan",,
+    description: "Finance your outboard engine, boat, or marine parts with 0% APR for 12 months or terms up to 60 months. Soft credit pull, same-day decisions, no prepayment penalty.",
+    keywords: "boat financing, 0 APR boat loan, outboard engine financing, marine loan calculator, boat loan rates, finance marine parts, trade in boat motor, commercial fleet financing, no hard credit pull boat loan",
     ogTitle: "Financing Made Simple | CoastalPro Marine",
-    ogDescription: "0% APR for 12 months or fixed rates from 4.99%. Apply in 3 minutes with no impact to your credit score.",,
+    ogDescription: "0% APR for 12 months or fixed rates from 4.99%. Apply in 3 minutes with no impact to your credit score.",
     canonical: "https://coastalpromarine.com/financing",
   });
   // Calculator state
