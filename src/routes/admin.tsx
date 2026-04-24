@@ -44,6 +44,7 @@ function slugify(s: string) {
 }
 
 function Admin() {
+  useSeo({ title: "Admin Panel | CoastalPro Marine" });
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
   const [products, setProducts] = useState<Product[]>([]);

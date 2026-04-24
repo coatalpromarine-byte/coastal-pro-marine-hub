@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { useSeo } from "@/lib/seo";
 
 function Login() {
+  useSeo({ title: "Admin Login | CoastalPro Marine" });
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
