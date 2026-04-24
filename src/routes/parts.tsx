@@ -98,8 +98,8 @@ function Parts() {
           </StaggerGroup>
           <Reveal delay={0.2} className="mt-16 rounded-2xl bg-gradient-deep text-background p-10 md:p-12 text-center noise relative">
             <p className="text-sm text-background/70 mb-3">Need a hard-to-find part? Call our parts counter.</p>
-            <a href="tel:+18005550199" className="inline-block font-display text-4xl md:text-5xl text-shimmer">
-              (800) 555-0199
+            <a href="tel:+19046225861" className="inline-block font-display text-4xl md:text-5xl text-shimmer">
+              (904) 622-5861
             </a>
           </Reveal>
         </Container>
