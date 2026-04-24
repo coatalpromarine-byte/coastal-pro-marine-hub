@@ -1,8 +1,7 @@
-"use client";
 import { motion } from "framer-motion";
 import { ShoppingCart, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
 import type { Product } from "@/lib/products";
 
@@ -48,8 +47,7 @@ export function ProductCard({ product, onView }: { product: Product; onView?: (p
               />
             ))}
             <Link
-              to="/product/$slug"
-              params={{ slug: product.slug }}
+              to={`/product/${product.slug}`}
               aria-label={`View ${product.name}`}
               className="absolute inset-0"
             />
@@ -99,7 +97,7 @@ export function ProductCard({ product, onView }: { product: Product; onView?: (p
       <div className="p-6 flex-1 flex flex-col">
         <div className="text-[10px] uppercase tracking-widest text-accent mb-2">{product.category}</div>
         <h3 className="font-display text-xl mb-2">
-          <Link to="/product/$slug" params={{ slug: product.slug }} className="hover:text-accent transition-colors">
+          <Link to={`/product/${product.slug}`} className="hover:text-accent transition-colors">
             {product.name}
           </Link>
         </h3>
@@ -117,8 +115,7 @@ export function ProductCard({ product, onView }: { product: Product; onView?: (p
               </button>
             ) : (
               <Link
-                to="/product/$slug"
-                params={{ slug: product.slug }}
+                to={`/product/${product.slug}`}
                 aria-label="View details"
                 className="h-9 w-9 rounded-full border border-border flex items-center justify-center hover:bg-secondary transition-colors"
               >

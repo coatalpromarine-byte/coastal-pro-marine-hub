@@ -1,5 +1,4 @@
-"use client";
-import { Link } from "@tanstack/react-router";
+import { Link, NavLink } from "react-router-dom";
 import { Anchor, Menu, X, Phone, ShoppingCart, LogIn, LayoutDashboard } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -56,15 +55,18 @@ export function SiteHeader() {
 
         <nav className="hidden lg:flex items-center gap-1">
           {nav.map((n) => (
-            <Link
+            <NavLink
               key={n.to}
               to={n.to}
-              className="relative px-4 py-2 text-sm font-medium text-foreground/65 hover:text-foreground transition-colors group"
-              activeProps={{ className: "text-foreground" }}
+              className={({ isActive }) =>
+                `relative px-4 py-2 text-sm font-medium transition-colors group ${
+                  isActive ? "text-foreground" : "text-foreground/65 hover:text-foreground"
+                }`
+              }
             >
               <span className="relative z-10">{n.label}</span>
               <span className="absolute inset-x-4 bottom-1 h-px bg-accent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
