@@ -310,3 +310,5 @@ function Sel({ label, value, onChange, options }: { label: string; value: string
     </div>
   );
 }
+
+export default Admin;
