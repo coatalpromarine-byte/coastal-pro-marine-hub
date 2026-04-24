@@ -51,7 +51,7 @@ function Admin() {
   const [editing, setEditing] = useState<Draft | null>(null);
 
   useEffect(() => {
-    if (!authLoading && !user) navigate({ to: "/login" });
+    if (!authLoading && !user) navigate("/login");
   }, [user, authLoading, navigate]);
 
   const load = async () => {
@@ -77,7 +77,7 @@ function Admin() {
     else { toast.success("Deleted"); load(); }
   };
 
-  const signOut = async () => { await supabase.auth.signOut(); navigate({ to: "/" }); };
+  const signOut = async () => { await supabase.auth.signOut(); navigate("/"); };
 
   return (
     <section className="py-20 md:py-28 min-h-[80vh]">

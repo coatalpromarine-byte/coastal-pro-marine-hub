@@ -22,7 +22,7 @@ function Login() {
       return;
     }
     toast.success("Signed in");
-    navigate({ to: "/admin" });
+    navigate("/admin");
   };
 
   return (
