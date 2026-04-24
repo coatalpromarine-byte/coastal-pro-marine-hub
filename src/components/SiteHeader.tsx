@@ -8,11 +8,13 @@ import { useAuth } from "@/hooks/useAuth";
 import { CONTACT_PHONE, CONTACT_PHONE_DISPLAY } from "@/lib/constants";
 
 const nav = [
+  { to: "/shop", label: "Shop" },
   { to: "/engines", label: "Engines" },
   { to: "/boats", label: "Boats" },
   { to: "/parts", label: "Parts" },
   { to: "/service", label: "Service" },
   { to: "/financing", label: "Financing" },
+  { to: "/reviews", label: "Reviews" },
   { to: "/contact", label: "Contact" },
 ] as const;
 

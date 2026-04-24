@@ -2,7 +2,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, Cog, Ship, Wrench, CreditCard, ShieldCheck, Anchor, ArrowUpRight, Quote } from "lucide-react";
+import { ArrowRight, Cog, Ship, Wrench, CreditCard, ShieldCheck, Anchor, ArrowUpRight, Quote, Award, Truck, Headphones, Sparkles, MapPin, Clock, ThumbsUp } from "lucide-react";
 import heroImg from "@/assets/hero-boat.jpg";
 import engineImg from "@/assets/engine.jpg";
 import boatImg from "@/assets/boat.jpg";
@@ -15,14 +15,17 @@ import { BrandMarquee, FloatingBadge } from "../components/BrandMarquee";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "CoastalPro Marine — Built for the Long Run" },
-      { name: "description", content: "Outboard engines from 2.5 to 350 HP, boats, parts and certified service. Financing available across the U.S." },
-      { property: "og:title", content: "CoastalPro Marine" },
-      { property: "og:description", content: "Outboard engines, boats and certified marine service." },
+      { title: "CoastalPro Marine — Outboard Engines, Boats & Marine Parts Dealer" },
+      { name: "description", content: "Authorized marine dealer since 1998. Shop outboard engines (2.5–350 HP), new boats, 10,000+ marine parts and certified service. Financing available, shipping to all 50 states." },
+      { name: "keywords", content: "marine dealer, outboard engines for sale, new boats for sale, marine parts, boat financing, certified marine service, Yamaha outboard, Mercury outboard, Suzuki outboard, fishing boats, pontoon boats" },
+      { property: "og:title", content: "CoastalPro Marine — Outboard Engines, Boats & Parts" },
+      { property: "og:description", content: "Authorized dealer of outboard engines, boats and 10,000+ marine parts. Certified service & financing." },
       { property: "og:image", content: heroImg },
+      { property: "og:type", content: "website" },
       { name: "twitter:image", content: heroImg },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://coastalpromarine.com/" }],
   }),
   component: Home,
 });
