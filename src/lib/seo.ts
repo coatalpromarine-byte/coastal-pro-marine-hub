@@ -20,11 +20,12 @@ export interface SeoOptions {
 function upsertMeta(selector: string, attrs: Record<string, string>) {
   let el = document.head.querySelector<HTMLMetaElement>(selector);
   if (!el) {
-    el = document.createElement("meta");
+    const created = document.createElement("meta");
     Object.entries(attrs).forEach(([k, v]) => {
-      if (k !== "content") el.setAttribute(k, v);
+      if (k !== "content") created.setAttribute(k, v);
     });
-    document.head.appendChild(el);
+    document.head.appendChild(created);
+    el = created;
   }
   el.setAttribute("content", attrs.content);
 }
