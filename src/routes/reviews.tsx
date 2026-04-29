@@ -5,7 +5,7 @@ import { Reveal, StaggerGroup, StaggerItem } from "../components/Motion";
 import { Star, ArrowRight } from "lucide-react";
 
 const reviews = [
-  { name: "James Reynolds", loc: "Wilmington, NC", product: "Yamaha F250 Outboard", rating: 5, text: "Smooth repower from start to finish. Their crew rigged twin F250s on my 28-footer and tuned everything dialed in for offshore. Couldn't ask for better." },
+  { name: "James Reynolds", loc: "United States", product: "Yamaha F250 Outboard", rating: 5, text: "Smooth repower from start to finish. Their crew rigged twin F250s on my 28-footer and tuned everything dialed in for offshore. Couldn't ask for better." },
   { name: "Sarah Mitchell", loc: "Charleston, SC", product: "Sun Tracker Pontoon", rating: 5, text: "Bought our family pontoon last spring. The team walked us through every option and the financing was painless. Best purchase we've made in years." },
   { name: "Michael Torres", loc: "Tampa, FL", product: "Mercury 9.9 HP Kicker", rating: 4, text: "Great little kicker, exactly what I needed for my dinghy. Shipped fast and well-packed. Knocked one star only because install instructions could be clearer." },
   { name: "Jennifer Walsh", loc: "Norfolk, VA", product: "Lowrance HDS-12 Live", rating: 5, text: "These guys know electronics. They helped me spec the right transducer for my hull and even called back to confirm before shipping. Real customer service." },
@@ -22,7 +22,7 @@ const reviews = [
   { name: "Mark Ferguson", loc: "Jacksonville, FL", product: "Optima Blue Top Battery", rating: 4, text: "Solid battery, fair price. Free shipping and arrived in two days. Would buy again." },
   { name: "Stephanie Park", loc: "Wrightsville Beach, NC", product: "Annual Service Package", rating: 5, text: "Their winterization and spring start service is worth every penny. Boat fires up first crank every April. Gives me total peace of mind." },
   { name: "Brian Carter", loc: "Charleston, SC", product: "Honda BF50", rating: 5, text: "Fuel-injected reliability. Quietest 50 HP I've ever run. The CoastalPro tech who installed it knew his stuff cold." },
-  { name: "Nicole Bauer", loc: "Wilmington, NC", product: "Bimini Top + Frame", rating: 5, text: "Custom-fit Bimini for my older boat. Color-matched perfectly and the install hardware is top quality. Five stars." },
+  { name: "Nicole Bauer", loc: "United States", product: "Bimini Top + Frame", rating: 5, text: "Custom-fit Bimini for my older boat. Color-matched perfectly and the install hardware is top quality. Five stars." },
   { name: "Andrew Patel", loc: "Outer Banks, NC", product: "Yamaha F300 Twin Setup", rating: 5, text: "Twin F300s rigged on a 32-footer. Their crew handled NMEA 2000, joystick, and helm controls flawlessly. Bluewater-ready in three days." },
   { name: "Megan Sullivan", loc: "Beaufort, NC", product: "Crestliner 1750 Fish Hawk", rating: 5, text: "Perfect tournament-ready aluminum boat. Loaded with the upgrades we wanted and priced fairly. The team really listened to what we needed." },
   { name: "Kevin Russo", loc: "Virginia Beach, VA", product: "Fuel/Water Separator Kit", rating: 5, text: "Saved me from a major problem on a recent offshore trip. Easy DIY install with the kit they recommended. Great parts counter staff." },
@@ -32,7 +32,7 @@ const reviews = [
   { name: "Eric Thompson", loc: "Morehead City, NC", product: "Tracker Grizzly 1648", rating: 5, text: "Tough little jon boat. Took it through cypress stumps and oyster beds — no leaks, no problems. Built like a tank." },
   { name: "Vanessa Brooks", loc: "Charleston, SC", product: "Mercury 4-Stroke 25 HP", rating: 5, text: "Replaced my old 2-stroke and the difference is night and day. Quiet, clean, fuel-efficient. CoastalPro had it in stock when no one else did." },
   { name: "Jonathan Pierce", loc: "Hilton Head, SC", product: "Trailer LED Light Kit", rating: 5, text: "Submersible LEDs that actually stay submersible. Wiring kit was complete and the instructions were clear. No more roadside fixes." },
-  { name: "Catherine Liu", loc: "Wilmington, NC", product: "Cobia 240 CC", rating: 5, text: "Beautiful center console. The team customized the leaning post and added rod holders exactly to spec. Worth every penny." },
+  { name: "Catherine Liu", loc: "United States", product: "Cobia 240 CC", rating: 5, text: "Beautiful center console. The team customized the leaning post and added rod holders exactly to spec. Worth every penny." },
   { name: "Gregory Adams", loc: "Outer Banks, NC", product: "Power Pole Blade 8'", rating: 5, text: "Game-changer for shallow water fishing. Install took half a day and the techs even adjusted my jack plate to match. Pro shop." },
   { name: "Diana Mendez", loc: "Beaufort, SC", product: "Mercruiser 4.5L Repower", rating: 5, text: "Inboard repower on a 24-foot deck boat. Engineering, install, and sea trial were all top-notch. Boat runs better than new." },
 ];
