@@ -9,7 +9,7 @@ import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, FORMSUBMIT_AJAX } from "@/lib/con
 import { toast } from "sonner";
 
 const info = [
-  { i: MapPin, t: "Showroom & Service", d: "2400 Harbor Way\nWilmington, NC 28401" },
+  { i: MapPin, t: "Showroom & Service", d: "United States" },
   { i: Phone, t: "Phone", d: CONTACT_PHONE_DISPLAY },
   { i: Mail, t: "Email", d: CONTACT_EMAIL },
   { i: Clock, t: "Hours", d: "Mon–Fri 8am–6pm\nSat 9am–4pm · Sun closed" },
@@ -17,11 +17,11 @@ const info = [
 
 function Contact() {
   useSeo({
-    title: "Contact CoastalPro Marine — Wilmington NC Boat Dealer",
-    description: "Visit our Wilmington, NC showroom or contact our sales, parts and certified service teams. Open Mon–Sat. Sea trials and quotes by appointment.",
-    keywords: "marine dealer contact, Wilmington NC boat dealer, marine service appointment, boat sales contact, outboard quote request",
+    title: "Contact CoastalPro Marine — United States Boat Dealer",
+    description: "Contact our sales, parts and certified service teams across the United States. Open Mon–Sat. Sea trials and quotes by appointment.",
+    keywords: "marine dealer contact, United States boat dealer, marine service appointment, boat sales contact, outboard quote request",
     ogTitle: "Contact | CoastalPro Marine",
-    ogDescription: "Visit our Wilmington, NC showroom or reach our sales, parts and service teams.",
+    ogDescription: "Reach our sales, parts and service teams across the United States.",
     canonical: "https://coastalpromarine.com/contact",
   });
   const [loading, setLoading] = useState(false);

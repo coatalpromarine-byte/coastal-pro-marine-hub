@@ -165,7 +165,7 @@ function Home() {
 
           <Reveal delay={0.3} className="mt-12 grid sm:grid-cols-3 gap-4">
             {[
-              { i: MapPin, t: "Wilmington, NC", d: "Showroom + service center" },
+              { i: MapPin, t: "United States", d: "Showroom + service center" },
               { i: Clock, t: "Mon–Sat", d: "Six days a week on the dock" },
               { i: ThumbsUp, t: "98% recommend", d: "Verified customer reviews" },
             ].map(({ i: Icon, t, d }) => (
@@ -379,7 +379,7 @@ function Home() {
           <div className="prose prose-lg max-w-none text-muted-foreground font-light leading-relaxed space-y-5">
             <p>
               For over 27 years, CoastalPro Marine has been the trusted name for boat sales, outboard engine repower
-              and marine parts along the Eastern Seaboard. From our Wilmington, NC headquarters we serve recreational
+              and marine parts across the country. From our United States headquarters we serve recreational
               captains, charter operators and commercial fleets across all 50 states with the largest in-stock inventory
               of <strong>outboard engines from 2.5 to 350 HP</strong>, <strong>new boats</strong> from leading
               manufacturers, and over 10,000 line items of genuine OEM parts and accessories.
