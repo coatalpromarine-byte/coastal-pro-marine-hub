@@ -52,7 +52,7 @@ export function SiteFooter() {
             <h4 className="font-display text-base mb-5 text-accent">Visit the dock</h4>
             <ul className="space-y-4 text-sm text-background/70">
               <li className="flex items-start gap-3"><MapPin className="h-4 w-4 mt-0.5 shrink-0 text-accent" />United States</li>
-              <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-accent" />(904) 622-5861</li>
+              <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-accent" />(972) 328-7226</li>
               <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-accent" />coastalpromarine@gmail.com</li>
             </ul>
           </div>
