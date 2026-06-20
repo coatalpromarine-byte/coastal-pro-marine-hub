@@ -13,8 +13,10 @@ export interface SeoOptions {
   ogDescription?: string;
   ogImage?: string;
   ogType?: string;
+  ogUrl?: string;
   twitterCard?: string;
   twitterImage?: string;
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
 function upsertMeta(selector: string, attrs: Record<string, string>) {
@@ -40,6 +42,21 @@ function upsertCanonical(href: string) {
   el.setAttribute("href", href);
 }
 
+function upsertJsonLd(data: Record<string, unknown> | Array<Record<string, unknown>>) {
+  // Remove any previously-set per-route JSON-LD blocks before adding the new one.
+  document.head
+    .querySelectorAll<HTMLScriptElement>("script[type='application/ld+json'][data-seo='route']")
+    .forEach((n) => n.remove());
+  const blocks = Array.isArray(data) ? data : [data];
+  for (const block of blocks) {
+    const s = document.createElement("script");
+    s.type = "application/ld+json";
+    s.setAttribute("data-seo", "route");
+    s.text = JSON.stringify(block);
+    document.head.appendChild(s);
+  }
+}
+
 export function applySeo(opts: SeoOptions) {
   if (opts.title) document.title = opts.title;
 
@@ -50,6 +67,7 @@ export function applySeo(opts: SeoOptions) {
   if (opts.ogDescription) tags.push({ property: "og:description", content: opts.ogDescription });
   if (opts.ogImage) tags.push({ property: "og:image", content: opts.ogImage });
   if (opts.ogType) tags.push({ property: "og:type", content: opts.ogType });
+  if (opts.ogUrl) tags.push({ property: "og:url", content: opts.ogUrl });
   if (opts.twitterCard) tags.push({ name: "twitter:card", content: opts.twitterCard });
   if (opts.twitterImage) tags.push({ name: "twitter:image", content: opts.twitterImage });
 
@@ -62,6 +80,7 @@ export function applySeo(opts: SeoOptions) {
   }
 
   if (opts.canonical) upsertCanonical(opts.canonical);
+  if (opts.jsonLd) upsertJsonLd(opts.jsonLd);
 }
 
 export function useSeo(opts: SeoOptions) {
