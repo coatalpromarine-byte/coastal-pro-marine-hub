@@ -6,7 +6,7 @@ import { Loader2, ShoppingCart, ChevronLeft, ChevronRight, ArrowLeft, Check } fr
 import { fetchProductBySlug, fetchProducts, type Product } from "@/lib/products";
 import { ProductCard } from "@/components/ProductCard";
 import { useCart } from "@/contexts/CartContext";
-import { useSeo } from "@/lib/seo";
+import { useSeo, applySeo } from "@/lib/seo";
 
 function ProductPage() {
   const { slug = "" } = useParams<{ slug: string }>();
@@ -34,6 +34,24 @@ function ProductPage() {
       .then(async (p) => {
         setProduct(p);
         if (p) {
+          applySeo({
+            jsonLd: {
+              "@context": "https://schema.org",
+              "@type": "Product",
+              name: p.name,
+              description: p.description ?? p.tagline ?? `${p.name} at CoastalPro Marine.`,
+              image: p.images?.length ? p.images : undefined,
+              sku: p.id,
+              category: p.category,
+              offers: p.price != null ? {
+                "@type": "Offer",
+                price: p.price,
+                priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
+                url: `/product/${p.slug}`,
+              } : undefined,
+            },
+          });
           const all = await fetchProducts();
           const sameCat = all.filter((x) => x.id !== p.id && x.category === p.category);
           const others = all.filter((x) => x.id !== p.id && x.category !== p.category);
