@@ -17,15 +17,17 @@ const CATS = [
 
 function Shop() {
   useSeo({
-    title: "Shop Marine Boats, Outboard Engines & Parts Online | CoastalPro Marine",
-    description: "Browse the full CoastalPro Marine catalog: new boats, outboard engines from 2.5 to 350 HP, propellers, batteries, electronics and 10,000+ marine parts shipped nationwide.",
+    title: "Shop Boats, Engines & Parts | CoastalPro Marine",
+    description: "Browse the full CoastalPro Marine catalog: new boats, outboards 2.5–350 HP, propellers, batteries, electronics and 10,000+ parts shipped nationwide.",
     keywords: "shop marine boats, outboard engines for sale, marine parts online, boat propellers, marine batteries, fishing boats, pontoon boats, center console boats, marine accessories",
     ogTitle: "Shop — CoastalPro Marine",
     ogDescription: "The full catalog: boats, engines, parts and accessories.",
     ogImage: heroImg,
+    ogType: "website",
+    ogUrl: "/shop",
     twitterCard: "summary_large_image",
     twitterImage: heroImg,
-    canonical: "https://coastalpromarine.com/shop",
+    canonical: "/shop",
   });
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);

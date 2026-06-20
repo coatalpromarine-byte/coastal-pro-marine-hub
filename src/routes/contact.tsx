@@ -17,12 +17,24 @@ const info = [
 
 function Contact() {
   useSeo({
-    title: "Contact CoastalPro Marine — United States Boat Dealer",
+    title: "Contact CoastalPro Marine — U.S. Boat Dealer",
     description: "Contact our sales, parts and certified service teams across the United States. Open Mon–Sat. Sea trials and quotes by appointment.",
     keywords: "marine dealer contact, United States boat dealer, marine service appointment, boat sales contact, outboard quote request",
     ogTitle: "Contact | CoastalPro Marine",
     ogDescription: "Reach our sales, parts and service teams across the United States.",
-    canonical: "https://coastalpromarine.com/contact",
+    ogType: "website",
+    ogUrl: "/contact",
+    canonical: "/contact",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      name: "CoastalPro Marine",
+      url: "/contact",
+      telephone: "+1-972-328-7226",
+      email: "coastalpromarine@gmail.com",
+      address: { "@type": "PostalAddress", addressCountry: "US" },
+      openingHours: ["Mo-Fr 08:00-18:00", "Sa 09:00-16:00"],
+    },
   });
   const [loading, setLoading] = useState(false);
 

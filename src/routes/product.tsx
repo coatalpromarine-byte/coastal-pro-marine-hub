@@ -17,7 +17,9 @@ function ProductPage() {
     keywords: `${pretty}, marine product, buy outboard engine, marine boat for sale, marine parts`,
     ogTitle: `${pretty} | CoastalPro Marine`,
     ogDescription: `Detailed specs and photos for ${pretty}.`,
-    canonical: `https://coastalpromarine.com/product/${slug}`,
+    ogType: "product",
+    ogUrl: `/product/${slug}`,
+    canonical: `/product/${slug}`,
   });
   const { add } = useCart();
   const [product, setProduct] = useState<Product | null>(null);

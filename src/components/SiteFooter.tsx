@@ -24,10 +24,15 @@ export function SiteFooter() {
               across the United States.
             </p>
             <div className="mt-8 flex gap-3">
-              {[Instagram, Facebook, Youtube].map((Icon, i) => (
+              {[
+                { Icon: Instagram, label: "Instagram" },
+                { Icon: Facebook, label: "Facebook" },
+                { Icon: Youtube, label: "YouTube" },
+              ].map(({ Icon, label }) => (
                 <motion.a
-                  key={i}
+                  key={label}
                   href="#"
+                  aria-label={`CoastalPro Marine on ${label}`}
                   whileHover={{ y: -3 }}
                   className="h-10 w-10 rounded-full border border-background/20 flex items-center justify-center hover:border-accent hover:text-accent transition-colors"
                 >

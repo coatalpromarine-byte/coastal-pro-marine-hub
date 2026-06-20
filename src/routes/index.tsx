@@ -20,16 +20,17 @@ const categories = [
 
 function Home() {
   useSeo({
-    title: "CoastalPro Marine — Outboard Engines, Boats & Marine Parts Dealer",
-    description: "Authorized marine dealer since 1998. Shop outboard engines (2.5–350 HP), new boats, 10,000+ marine parts and certified service. Financing available, shipping to all 50 states.",
+    title: "CoastalPro Marine — Outboard Engines, Boats & Parts",
+    description: "Authorized U.S. marine dealer since 1998. Outboard engines (2.5–350 HP), new boats, 10,000+ parts and certified service.",
     keywords: "marine dealer, outboard engines for sale, new boats for sale, marine parts, boat financing, certified marine service, Yamaha outboard, Mercury outboard, Suzuki outboard, fishing boats, pontoon boats",
     ogTitle: "CoastalPro Marine — Outboard Engines, Boats & Parts",
     ogDescription: "Authorized dealer of outboard engines, boats and 10,000+ marine parts. Certified service & financing.",
     ogImage: heroImg,
     ogType: "website",
+    ogUrl: "/",
     twitterImage: heroImg,
     twitterCard: "summary_large_image",
-    canonical: "https://coastalpromarine.com/",
+    canonical: "/",
   });
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -64,6 +65,7 @@ function Home() {
             className="font-display text-5xl md:text-7xl lg:text-[7rem] font-semibold leading-[0.95] text-balance"
           />
           <SplitHeading
+            as="div"
             text="Powered by the tide."
             italic={[0, 1, 2, 3]}
             className="font-display text-5xl md:text-7xl lg:text-[7rem] font-semibold leading-[0.95] text-balance mt-2"

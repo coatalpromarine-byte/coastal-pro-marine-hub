@@ -15,15 +15,27 @@ const services = [
 
 function Service() {
   useSeo({
-    title: "Marine Service Center — Repowers, Warranty & Winterization | CoastalPro Marine",
-    description: "Master-certified marine technicians for outboard repowers, factory warranty work, winterization, diagnostics and on-water service. 27 years on the bench.",
+    title: "Marine Service Center | CoastalPro Marine",
+    description: "Master-certified marine technicians for outboard repowers, factory warranty work, winterization, diagnostics and on-water service.",
     keywords: "marine service, outboard repower, boat repair, marine warranty service, winterization, mobile marine mechanic, marine diagnostics, boat maintenance, certified marine technician",
     ogTitle: "Marine Service Center | CoastalPro Marine",
     ogDescription: "Repowers, warranty, winterization and on-water diagnostics.",
     ogImage: serviceImg,
+    ogType: "website",
+    ogUrl: "/service",
     twitterImage: serviceImg,
     twitterCard: "summary_large_image",
-    canonical: "https://coastalpromarine.com/service",
+    canonical: "/service",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      name: "CoastalPro Marine — Service Center",
+      url: "/service",
+      telephone: "+1-972-328-7226",
+      email: "coastalpromarine@gmail.com",
+      address: { "@type": "PostalAddress", addressCountry: "US" },
+      openingHours: ["Mo-Fr 08:00-18:00", "Sa 09:00-16:00"],
+    },
   });
   return (
     <>
