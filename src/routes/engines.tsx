@@ -43,15 +43,17 @@ const tiers = [
 
 function Engines() {
   useSeo({
-    title: "Outboard Engines For Sale 2.5–350 HP | Yamaha, Mercury, Suzuki | CoastalPro Marine",
-    description: "Authorized dealer for Yamaha, Mercury, Suzuki and Honda outboard engines from 2.5 to 350 HP. Portable kickers, mid-range 4-strokes, V6 performance and V8 offshore powerheads.",
+    title: "Outboard Engines 2.5–350 HP | CoastalPro Marine",
+    description: "Authorized dealer for Yamaha, Mercury, Suzuki and Honda outboards from 2.5 to 350 HP — kickers, 4-strokes, V6 and V8 offshore powerheads.",
     keywords: "outboard engines for sale, Yamaha outboard, Mercury outboard, Suzuki outboard, Honda outboard, 4-stroke outboard, V6 outboard, repower marine engine, 350 HP outboard, kicker motor",
     ogTitle: "Outboard Engines | CoastalPro Marine",
     ogDescription: "2.5 to 350 HP outboards from every major brand. Authorized dealer.",
     ogImage: engineImg,
+    ogType: "website",
+    ogUrl: "/engines",
     twitterImage: engineImg,
     twitterCard: "summary_large_image",
-    canonical: "https://coastalpromarine.com/engines",
+    canonical: "/engines",
   });
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);

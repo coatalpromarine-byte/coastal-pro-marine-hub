@@ -72,14 +72,17 @@ export function SplitHeading({
   text,
   className = "",
   italic = [],
+  as: Tag = "h1",
 }: {
   text: string;
   className?: string;
   italic?: number[];
+  as?: "h1" | "h2" | "h3" | "div";
 }) {
   const words = text.split(" ");
+  const MotionTag = motion[Tag] as typeof motion.h1;
   return (
-    <motion.h1
+    <MotionTag
       className={className}
       initial="hidden"
       animate="show"
@@ -98,7 +101,7 @@ export function SplitHeading({
           </motion.span>
         </span>
       ))}
-    </motion.h1>
+    </MotionTag>
   );
 }
 

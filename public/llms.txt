@@ -1,0 +1,15 @@
+# CoastalPro Marine
+
+> Authorized U.S. marine dealer since 1998 — outboard engines (2.5–350 HP), new boats, 10,000+ marine parts and certified service.
+
+## Pages
+
+- [Home](/): Overview of CoastalPro Marine — engines, boats, parts and service.
+- [Outboard Engines](/engines): Yamaha, Mercury, Suzuki and Honda outboards from 2.5 to 350 HP.
+- [Boats](/boats): Jon, bass, pontoon and center console boats from leading builders.
+- [Parts & Accessories](/parts): 10,000+ marine parts shipped nationwide.
+- [Shop](/shop): Browse the full catalog of boats, engines and parts.
+- [Service Center](/service): Repowers, warranty work, winterization and diagnostics.
+- [Financing](/financing): Marine financing with terms up to 240 months.
+- [Reviews](/reviews): Verified customer reviews.
+- [Contact](/contact): Reach sales, parts and service teams.
